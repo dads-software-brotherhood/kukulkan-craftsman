@@ -125,7 +125,7 @@ public class KukulkanVisitor extends kukulkanBaseVisitor<VisitorContext> {
 
     @Override
     public VisitorContext visitPatternValidator(kukulkanParser.PatternValidatorContext ctx) {
-        constraint.setPattern(ctx.NUMERIC_VALUE().getText());
+        constraint.setPattern(ctx.PATTERN_VALUE().getText().substring(1, ctx.PATTERN_VALUE().getText().length()-1));
         dme.setHasConstraints(true);
         javaProperty.setHasConstraints(true);
         javaProperty.setHasConstraints(true);

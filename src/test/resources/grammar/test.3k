@@ -1,5 +1,5 @@
 entity Persona (usuarios){
-    nombre String required minlength(3) maxlength(50),
+    nombre String required minlength(3) maxlength(50) pattern("persona"),
     edad Integer required,
     numeroCredencial Long,
     sueldo BigDecimal,
@@ -16,7 +16,7 @@ entity Persona (usuarios){
 }
 
 entity Direccion (direcciones){
-    nombre String required minlength(3) maxlength(50) pattern(123456),
+    nombre String required minlength(3) maxlength(50) pattern("direccion"),
     edad Integer required min(12) max(23),
     numeroCredencial Long required min(13) max(23),
     sueldo BigDecimal required min(15) max(23),
