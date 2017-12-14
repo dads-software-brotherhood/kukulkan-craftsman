@@ -1,9 +1,0 @@
-{
-    "kukulkancraftsmanApp": {
-        "ReportType" : {
-            "null": "",
-            "OPERATIONAL": "OPERATIONAL",
-            "INFRAESTRUCTURE": "INFRAESTRUCTURE"
-        }
-    }
-}
