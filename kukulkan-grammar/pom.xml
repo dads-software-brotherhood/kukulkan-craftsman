@@ -5,7 +5,7 @@
 	<groupId>mx.infotec.dads.kukulkan</groupId>
 	<artifactId>kukulkan-grammar</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Antlr 4 Archetype</name>
+	<name>kukulkan-grammar</name>
 	<packaging>jar</packaging>
 
 	<properties>

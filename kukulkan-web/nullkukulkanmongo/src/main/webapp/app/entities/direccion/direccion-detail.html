@@ -1,0 +1,87 @@
+
+<div>
+    <h2><span data-translate="kukulkanmongoApp.direccion.detail.title">Direccion</span> {{vm.direccion.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="kukulkanmongoApp.direccion.id">id</span></dt>
+        <dd>
+			<span>{{vm.direccion.id}}</span>
+		<dd>
+        <dt><span data-translate="kukulkanmongoApp.direccion.nombre">nombre</span></dt>
+        <dd>
+			<span>{{vm.direccion.nombre}}</span>
+		<dd>
+        <dt><span data-translate="kukulkanmongoApp.direccion.edad">edad</span></dt>
+        <dd>
+			<span>{{vm.direccion.edad}}</span>
+		<dd>
+        <dt><span data-translate="kukulkanmongoApp.direccion.numeroCredencial">numeroCredencial</span></dt>
+        <dd>
+			<span>{{vm.direccion.numeroCredencial}}</span>
+		<dd>
+        <dt><span data-translate="kukulkanmongoApp.direccion.sueldo">sueldo</span></dt>
+        <dd>
+			<span>{{vm.direccion.sueldo}}</span>
+		<dd>
+        <dt><span data-translate="kukulkanmongoApp.direccion.impuesto">impuesto</span></dt>
+        <dd>
+			<span>{{vm.direccion.impuesto}}</span>
+		<dd>
+        <dt><span data-translate="kukulkanmongoApp.direccion.impuestoDetalle">impuestoDetalle</span></dt>
+        <dd>
+			<span>{{vm.direccion.impuestoDetalle}}</span>
+		<dd>
+        <dt><span data-translate="kukulkanmongoApp.direccion.activo">activo</span></dt>
+        <dd>
+			<span>{{vm.direccion.activo}}</span>
+		<dd>
+        <dt><span data-translate="kukulkanmongoApp.direccion.fechaLocalDate">fechaLocalDate</span></dt>
+        <dd>  
+			<span>{{vm.direccion.fechaLocalDate | date:'mediumDate'}}</span>
+		<dd>        <dt><span data-translate="kukulkanmongoApp.direccion.fechaZoneDateTime">fechaZoneDateTime</span></dt>
+        <dd>
+			<span>{{vm.direccion.fechaZoneDateTime | date:'medium'}}</span>
+		<dd>
+        <dt><span data-translate="kukulkanmongoApp.direccion.imagen">imagen</span></dt>
+        <dd>            
+            <div ng-if="vm.direccion.imagen">
+                <a ng-click="vm.openFile(vm.direccion.imagenContentType, vm.direccion.imagen)" data-translate="entity.action.open">open</a>
+                {{vm.direccion.imagenContentType}}, {{vm.byteSize(vm.direccion.imagen)}}
+            </div>
+		<dd>
+        <dt><span data-translate="kukulkanmongoApp.direccion.imagenAnyBlob">imagenAnyBlob</span></dt>
+        <dd>            
+            <div ng-if="vm.direccion.imagenAnyBlob">
+                <a ng-click="vm.openFile(vm.direccion.imagenAnyBlobContentType, vm.direccion.imagenAnyBlob)" data-translate="entity.action.open">open</a>
+                {{vm.direccion.imagenAnyBlobContentType}}, {{vm.byteSize(vm.direccion.imagenAnyBlob)}}
+            </div>
+		<dd>
+        <dt><span data-translate="kukulkanmongoApp.direccion.imagenBlob">imagenBlob</span></dt>
+        <dd>            
+            <div ng-if="vm.direccion.imagenBlob">
+                <a ng-click="vm.openFile(vm.direccion.imagenBlobContentType, vm.direccion.imagenBlob)" data-translate="entity.action.open">open</a>
+                {{vm.direccion.imagenBlobContentType}}, {{vm.byteSize(vm.direccion.imagenBlob)}}
+            </div>
+		<dd>
+        <dt><span data-translate="kukulkanmongoApp.direccion.desc">desc</span></dt>
+        <dd>
+			<span>{{vm.direccion.desc}}</span>
+		<dd>
+        <dt><span data-translate="kukulkanmongoApp.direccion.instante">instante</span></dt>
+        <dd>
+			<span>{{vm.direccion.instante | date:'medium'}}</span>
+		<dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="direccion-detail.edit({id:vm.direccion.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,38 @@
+{
+    "kukulkanmongoApp": {
+        "persona" : {
+            "home": {
+                "title": "personas",
+                "createLabel": "Crear nuevo Persona",
+                "createOrEditLabel": "Crear o editar Persona",
+                "search": "Buscar Persona"
+            },
+            "created": "Un nuevo Persona ha sido creado con el identificador {{ param }}",
+            "updated": "Un Persona ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Persona ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Persona {{ id }}?"
+            },
+            "detail": {
+                "title": "Persona"
+            },
+            "nombre": "Nombre", 
+            "edad": "Edad", 
+            "numeroCredencial": "NumeroCredencial", 
+            "sueldo": "Sueldo", 
+            "impuesto": "Impuesto", 
+            "impuestoDetalle": "ImpuestoDetalle", 
+            "activo": "Activo", 
+            "fechaLocalDate": "FechaLocalDate", 
+            "fechaZoneDateTime": "FechaZoneDateTime", 
+            "imagen": "Imagen", 
+            "imagenContentType": "ImagenContentType", 
+            "imagenAnyBlob": "ImagenAnyBlob", 
+            "imagenAnyBlobContentType": "ImagenAnyBlobContentType", 
+            "imagenBlob": "ImagenBlob", 
+            "imagenBlobContentType": "ImagenBlobContentType", 
+            "desc": "Desc", 
+            "instante": "Instante"
+        }
+    }
+}

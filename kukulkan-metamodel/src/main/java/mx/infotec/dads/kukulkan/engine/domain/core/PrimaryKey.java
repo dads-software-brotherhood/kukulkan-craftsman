@@ -27,7 +27,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.TreeSet;
 
-import mx.infotec.dads.kukulkan.util.PKGenerationStrategy;
+import mx.infotec.dads.kukulkan.engine.util.PKGenerationStrategy;
 
 /**
  * PrimaryKey container for PrimaryKey descriptio.

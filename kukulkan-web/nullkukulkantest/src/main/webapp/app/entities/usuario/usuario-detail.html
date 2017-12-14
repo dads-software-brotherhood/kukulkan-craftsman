@@ -1,0 +1,87 @@
+
+<div>
+    <h2><span data-translate="kukulkantestApp.usuario.detail.title">Usuario</span> {{vm.usuario.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="kukulkantestApp.usuario.id">id</span></dt>
+        <dd>
+			<span>{{vm.usuario.id}}</span>
+		<dd>
+        <dt><span data-translate="kukulkantestApp.usuario.activo">activo</span></dt>
+        <dd>
+			<span>{{vm.usuario.activo}}</span>
+		<dd>
+        <dt><span data-translate="kukulkantestApp.usuario.edad">edad</span></dt>
+        <dd>
+			<span>{{vm.usuario.edad}}</span>
+		<dd>
+        <dt><span data-translate="kukulkantestApp.usuario.fechaLocalDate">fechaLocalDate</span></dt>
+        <dd>  
+			<span>{{vm.usuario.fechaLocalDate | date:'mediumDate'}}</span>
+		<dd>        <dt><span data-translate="kukulkantestApp.usuario.fechaZoneDateTime">fechaZoneDateTime</span></dt>
+        <dd>
+			<span>{{vm.usuario.fechaZoneDateTime | date:'medium'}}</span>
+		<dd>
+        <dt><span data-translate="kukulkantestApp.usuario.imagen">imagen</span></dt>
+        <dd>            
+            <div ng-if="vm.usuario.imagen">
+                <a ng-click="vm.openFile(vm.usuario.imagenContentType, vm.usuario.imagen)" data-translate="entity.action.open">open</a>
+                {{vm.usuario.imagenContentType}}, {{vm.byteSize(vm.usuario.imagen)}}
+            </div>
+		<dd>
+        <dt><span data-translate="kukulkantestApp.usuario.imagenAnyBlob">imagenAnyBlob</span></dt>
+        <dd>            
+            <div ng-if="vm.usuario.imagenAnyBlob">
+                <a ng-click="vm.openFile(vm.usuario.imagenAnyBlobContentType, vm.usuario.imagenAnyBlob)" data-translate="entity.action.open">open</a>
+                {{vm.usuario.imagenAnyBlobContentType}}, {{vm.byteSize(vm.usuario.imagenAnyBlob)}}
+            </div>
+		<dd>
+        <dt><span data-translate="kukulkantestApp.usuario.imagenBlob">imagenBlob</span></dt>
+        <dd>            
+            <div ng-if="vm.usuario.imagenBlob">
+                <a ng-click="vm.openFile(vm.usuario.imagenBlobContentType, vm.usuario.imagenBlob)" data-translate="entity.action.open">open</a>
+                {{vm.usuario.imagenBlobContentType}}, {{vm.byteSize(vm.usuario.imagenBlob)}}
+            </div>
+		<dd>
+        <dt><span data-translate="kukulkantestApp.usuario.impuesto">impuesto</span></dt>
+        <dd>
+			<span>{{vm.usuario.impuesto}}</span>
+		<dd>
+        <dt><span data-translate="kukulkantestApp.usuario.impuestoDetalle">impuestoDetalle</span></dt>
+        <dd>
+			<span>{{vm.usuario.impuestoDetalle}}</span>
+		<dd>
+        <dt><span data-translate="kukulkantestApp.usuario.instante">instante</span></dt>
+        <dd>
+			<span>{{vm.usuario.instante | date:'medium'}}</span>
+		<dd>
+        <dt><span data-translate="kukulkantestApp.usuario.jhiDesc">jhiDesc</span></dt>
+        <dd>
+			<span>{{vm.usuario.jhiDesc}}</span>
+		<dd>
+        <dt><span data-translate="kukulkantestApp.usuario.nombre">nombre</span></dt>
+        <dd>
+			<span>{{vm.usuario.nombre}}</span>
+		<dd>
+        <dt><span data-translate="kukulkantestApp.usuario.numeroCredencial">numeroCredencial</span></dt>
+        <dd>
+			<span>{{vm.usuario.numeroCredencial}}</span>
+		<dd>
+        <dt><span data-translate="kukulkantestApp.usuario.sueldo">sueldo</span></dt>
+        <dd>
+			<span>{{vm.usuario.sueldo}}</span>
+		<dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="usuario-detail.edit({id:vm.usuario.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

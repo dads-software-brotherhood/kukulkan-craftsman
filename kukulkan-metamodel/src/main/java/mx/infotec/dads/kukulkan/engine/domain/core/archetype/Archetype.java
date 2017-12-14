@@ -1,9 +1,7 @@
 package mx.infotec.dads.kukulkan.engine.domain.core.archetype;
 
-import java.util.Collection;
-
-import mx.infotec.dads.kukulkan.domain.enumeration.ArchetypeType;
 import mx.infotec.dads.kukulkan.engine.domain.core.AbstractElement;
+import mx.infotec.dads.kukulkan.engine.domain.core.ArchetypeType;
 
 /**
  * The class Archetype is an abstraction of a real archetype or project

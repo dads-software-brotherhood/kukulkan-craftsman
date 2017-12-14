@@ -25,7 +25,7 @@ package mx.infotec.dads.kukulkan.engine.domain.core;
 
 import java.io.Serializable;
 
-import mx.infotec.dads.kukulkan.util.PKGenerationStrategy;
+import mx.infotec.dads.kukulkan.engine.util.PKGenerationStrategy;
 
 /**
  * ProrjectConfiguration Class

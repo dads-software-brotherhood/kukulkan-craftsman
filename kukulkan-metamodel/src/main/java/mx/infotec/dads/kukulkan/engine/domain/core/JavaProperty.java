@@ -31,8 +31,8 @@ import org.apache.metamodel.schema.ColumnType;
 
 import mx.infotec.dads.kukulkan.engine.grammar.GrammarMapping;
 import mx.infotec.dads.kukulkan.engine.grammar.GrammarPropertyType;
+import mx.infotec.dads.kukulkan.engine.util.DataBaseMapping;
 import mx.infotec.dads.kukulkan.grammar.kukulkanParser.FieldTypeContext;
-import mx.infotec.dads.kukulkan.util.DataBaseMapping;
 
 /**
  * 

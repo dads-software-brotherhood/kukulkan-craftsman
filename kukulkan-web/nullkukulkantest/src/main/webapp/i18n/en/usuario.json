@@ -1,0 +1,37 @@
+{
+    "kukulkantestApp": {
+        "usuario" : {
+            "home": {
+                "title": "usuarios",
+                "createLabel": "Create a new Usuario",
+                "createOrEditLabel": "Create or edit a Usuario"
+            },
+            "created": "A new Usuario is created with identifier {{ param }}",
+            "updated": "A Usuario is updated with identifier {{ param }}",
+            "deleted": "A Usuario is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Usuario {{ id }}?"
+            },
+            "detail": {
+                "title": "Usuario"
+            },
+            "activo": "Activo", 
+            "edad": "Edad", 
+            "fechaLocalDate": "FechaLocalDate", 
+            "fechaZoneDateTime": "FechaZoneDateTime", 
+            "imagen": "Imagen", 
+            "imagenAnyBlob": "ImagenAnyBlob", 
+            "imagenAnyBlobContentType": "ImagenAnyBlobContentType", 
+            "imagenBlob": "ImagenBlob", 
+            "imagenBlobContentType": "ImagenBlobContentType", 
+            "imagenContentType": "ImagenContentType", 
+            "impuesto": "Impuesto", 
+            "impuestoDetalle": "ImpuestoDetalle", 
+            "instante": "Instante", 
+            "jhiDesc": "JhiDesc", 
+            "nombre": "Nombre", 
+            "numeroCredencial": "NumeroCredencial", 
+            "sueldo": "Sueldo"
+        }
+    }
+}

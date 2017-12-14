@@ -1,0 +1,256 @@
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myUsuarioLabel" data-translate="kukulkantestApp.usuario.home.createOrEditLabel">Create or edit a Usuario</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.usuario.id">
+            <label for="id" data-translate="global.field.id">id</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.usuario.id" readonly />
+        </div>
+			<div class="form-group">
+				<label class="control-label" data-translate="kukulkantestApp.usuario.activo"
+					for="field_activo">activo</label>
+				<input type="checkbox" name="activo" id="field_activo"
+					ng-model="vm.usuario.activo" />
+			</div>
+			<div class="form-group">
+				<label class="control-label" data-translate="kukulkantestApp.usuario.edad"
+					for="field_edad">edad</label>
+				<input type="number" class="form-control" name="edad" id="field_edad"
+					ng-model="vm.usuario.edad"
+  
+					/>
+				<div ng-show="editForm.edad.$invalid">
+	                <p class="help-block"
+	                    ng-show="editForm.edad.$error.number" data-translate="entity.validation.number">
+	                    This field should be a number.
+	                </p>
+            	</div>	
+			</div>
+			<div class="form-group">
+				<label class="control-label" data-translate="kukulkantestApp.usuario.fechaLocalDate"
+					for="field_fechaLocalDate">fechaLocalDate</label>
+				<div class="input-group">
+					<input id="field_fechaLocalDate" type="text" class="form-control"
+						name="fechaLocalDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.usuario.fechaLocalDate"
+						is-open="vm.datePickerOpenStatus.fechaLocalDate" 
+ />
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default" ng-click="vm.openCalendar('fechaLocalDate')">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label" data-translate="kukulkantestApp.usuario.fechaZoneDateTime"
+					for="field_fechaZoneDateTime">fechaZoneDateTime</label>
+				<div class="input-group">
+					<input id="field_fechaZoneDateTime" type="text" class="form-control"
+						name="fechaZoneDateTime" datetime-picker="{{dateformat}}" ng-model="vm.usuario.fechaZoneDateTime"
+						is-open="vm.datePickerOpenStatus.fechaZoneDateTime" 
+ />
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default"
+							ng-click="vm.openCalendar('fechaZoneDateTime')">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+				</div>
+				<div ng-show="editForm.fechaZoneDateTime.$invalid">
+	                <p class="help-block"
+	                    ng-show="editForm.fechaZoneDateTime.$error.ZonedDateTimelocal" data-translate="entity.validation.ZonedDateTimelocal">
+	                    This field should be a date and time.
+	                </p>
+            	</div>
+			</div>
+			<div class="form-group" ngf-drop ngf-change="vm.setImagen($file, vm.usuario)">
+				<label class="control-label" data-translate="kukulkantestApp.usuario.imagen"
+					for="field_imagen">imagen</label>
+				<div>
+					<div ng-if="vm.usuario.imagen" class="help-block clearfix">
+						<a class="pull-left"
+							ng-click="vm.openFile(vm.usuario.imagenContentType, vm.usuario.imagen)"
+							data-translate="entity.action.open">open</a>
+						<br>
+							<span class="pull-left">{{vm.usuario.imagenContentType}}, {{vm.byteSize(vm.usuario.imagen)}}
+							</span>
+							<button type="button"
+								ng-click="vm.usuario.imagen=null;vm.usuario.imagenContentType=null;"
+								class="btn btn-default btn-xs pull-right">
+								<span class="glyphicon glyphicon-remove"></span>
+							</button>
+					</div>
+					<button type="button" ngf-select class="btn btn-default btn-block"
+						ngf-change="vm.setImagen($file, vm.usuario)" data-translate="entity.action.addblob">
+						Add blob
+					</button>
+				</div>
+				<input type="hidden" class="form-control" name="imagen" id="field_imagen"
+					ng-model="vm.usuario.imagen" />
+				<input type="hidden" class="form-control" name="imagenContentType"
+					id="field_imagenContentType" ng-model="vm.usuario.imagenContentType" />
+			</div>
+			<div class="form-group" ngf-drop ngf-change="vm.setImagenAnyBlob($file, vm.usuario)">
+				<label class="control-label" data-translate="kukulkantestApp.usuario.imagenAnyBlob"
+					for="field_imagenAnyBlob">imagenAnyBlob</label>
+				<div>
+					<div ng-if="vm.usuario.imagenAnyBlob" class="help-block clearfix">
+						<a class="pull-left"
+							ng-click="vm.openFile(vm.usuario.imagenAnyBlobContentType, vm.usuario.imagenAnyBlob)"
+							data-translate="entity.action.open">open</a>
+						<br>
+							<span class="pull-left">{{vm.usuario.imagenAnyBlobContentType}}, {{vm.byteSize(vm.usuario.imagenAnyBlob)}}
+							</span>
+							<button type="button"
+								ng-click="vm.usuario.imagenAnyBlob=null;vm.usuario.imagenAnyBlobContentType=null;"
+								class="btn btn-default btn-xs pull-right">
+								<span class="glyphicon glyphicon-remove"></span>
+							</button>
+					</div>
+					<button type="button" ngf-select class="btn btn-default btn-block"
+						ngf-change="vm.setImagenAnyBlob($file, vm.usuario)" data-translate="entity.action.addblob">
+						Add blob
+					</button>
+				</div>
+				<input type="hidden" class="form-control" name="imagenAnyBlob" id="field_imagenAnyBlob"
+					ng-model="vm.usuario.imagenAnyBlob" />
+				<input type="hidden" class="form-control" name="imagenAnyBlobContentType"
+					id="field_imagenAnyBlobContentType" ng-model="vm.usuario.imagenAnyBlobContentType" />
+			</div>
+			<div class="form-group" ngf-drop ngf-change="vm.setImagenBlob($file, vm.usuario)">
+				<label class="control-label" data-translate="kukulkantestApp.usuario.imagenBlob"
+					for="field_imagenBlob">imagenBlob</label>
+				<div>
+					<div ng-if="vm.usuario.imagenBlob" class="help-block clearfix">
+						<a class="pull-left"
+							ng-click="vm.openFile(vm.usuario.imagenBlobContentType, vm.usuario.imagenBlob)"
+							data-translate="entity.action.open">open</a>
+						<br>
+							<span class="pull-left">{{vm.usuario.imagenBlobContentType}}, {{vm.byteSize(vm.usuario.imagenBlob)}}
+							</span>
+							<button type="button"
+								ng-click="vm.usuario.imagenBlob=null;vm.usuario.imagenBlobContentType=null;"
+								class="btn btn-default btn-xs pull-right">
+								<span class="glyphicon glyphicon-remove"></span>
+							</button>
+					</div>
+					<button type="button" ngf-select class="btn btn-default btn-block"
+						ngf-change="vm.setImagenBlob($file, vm.usuario)" data-translate="entity.action.addblob">
+						Add blob
+					</button>
+				</div>
+				<input type="hidden" class="form-control" name="imagenBlob" id="field_imagenBlob"
+					ng-model="vm.usuario.imagenBlob" />
+				<input type="hidden" class="form-control" name="imagenBlobContentType"
+					id="field_imagenBlobContentType" ng-model="vm.usuario.imagenBlobContentType" />
+			</div>
+			<div class="form-group">
+				<label class="control-label" data-translate="kukulkantestApp.usuario.impuesto"
+					for="field_impuesto">impuesto</label>
+				<input type="number" class="form-control" name="impuesto" id="field_impuesto"
+					ng-model="vm.usuario.impuesto"
+  
+					/>
+				<div ng-show="editForm.impuesto.$invalid">
+	                <p class="help-block"
+	                    ng-show="editForm.impuesto.$error.number" data-translate="entity.validation.number">
+	                    This field should be a number.
+	                </p>
+            	</div>	
+			</div>
+			<div class="form-group">
+				<label class="control-label" data-translate="kukulkantestApp.usuario.impuestoDetalle"
+					for="field_impuestoDetalle">impuestoDetalle</label>
+				<input type="number" class="form-control" name="impuestoDetalle" id="field_impuestoDetalle"
+					ng-model="vm.usuario.impuestoDetalle"
+  
+					/>
+				<div ng-show="editForm.impuestoDetalle.$invalid">
+	                <p class="help-block"
+	                    ng-show="editForm.impuestoDetalle.$error.number" data-translate="entity.validation.number">
+	                    This field should be a number.
+	                </p>
+            	</div>	
+			</div>
+			<div class="form-group">
+				<label class="control-label" data-translate="kukulkantestApp.usuario.instante"
+					for="field_instante">instante</label>
+				<div class="input-group">
+					<input id="field_instante" type="text" class="form-control"
+						name="instante" datetime-picker="{{dateformat}}" ng-model="vm.usuario.instante"
+						is-open="vm.datePickerOpenStatus.instante" 
+ />
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default"
+							ng-click="vm.openCalendar('instante')">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+				</div>
+				<div ng-show="editForm.instante.$invalid">
+	                <p class="help-block"
+	                    ng-show="editForm.instante.$error.ZonedDateTimelocal" data-translate="entity.validation.ZonedDateTimelocal">
+	                    This field should be a date and time.
+	                </p>
+            	</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label" data-translate="kukulkantestApp.usuario.jhiDesc"
+					for="field_jhiDesc">jhiDesc</label>
+				<input type="text" class="form-control" name="jhiDesc" id="field_jhiDesc"
+					ng-model="vm.usuario.jhiDesc" 
+   
+					/>
+			</div>
+			<div class="form-group">
+				<label class="control-label" data-translate="kukulkantestApp.usuario.nombre"
+					for="field_nombre">nombre</label>
+				<input type="text" class="form-control" name="nombre" id="field_nombre"
+					ng-model="vm.usuario.nombre" 
+					required   
+					/>
+			</div>
+			<div class="form-group">
+				<label class="control-label" data-translate="kukulkantestApp.usuario.numeroCredencial"
+					for="field_numeroCredencial">numeroCredencial</label>
+				<input type="number" class="form-control" name="numeroCredencial" id="field_numeroCredencial"
+					ng-model="vm.usuario.numeroCredencial"
+  
+					/>
+				<div ng-show="editForm.numeroCredencial.$invalid">
+	                <p class="help-block"
+	                    ng-show="editForm.numeroCredencial.$error.number" data-translate="entity.validation.number">
+	                    This field should be a number.
+	                </p>
+            	</div>	
+			</div>
+			<div class="form-group">
+				<label class="control-label" data-translate="kukulkantestApp.usuario.sueldo"
+					for="field_sueldo">sueldo</label>
+				<input type="number" class="form-control" name="sueldo" id="field_sueldo"
+					ng-model="vm.usuario.sueldo"
+  
+					/>
+				<div ng-show="editForm.sueldo.$invalid">
+	                <p class="help-block"
+	                    ng-show="editForm.sueldo.$error.number" data-translate="entity.validation.number">
+	                    This field should be a number.
+	                </p>
+            	</div>	
+			</div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

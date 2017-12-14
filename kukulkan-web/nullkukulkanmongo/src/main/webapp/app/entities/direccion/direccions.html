@@ -1,0 +1,111 @@
+<div>
+    <h2 data-translate="kukulkanmongoApp.direccion.home.title">direccions</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="direccion.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs-down" data-translate="kukulkanmongoApp.direccion.home.createLabel">
+                        Create new Direccion
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'kukulkanmongoApp.direccion.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="nombre"><span data-translate="kukulkanmongoApp.direccion.nombre">nombre</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="edad"><span data-translate="kukulkanmongoApp.direccion.edad">edad</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="numeroCredencial"><span data-translate="kukulkanmongoApp.direccion.numeroCredencial">numeroCredencial</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sueldo"><span data-translate="kukulkanmongoApp.direccion.sueldo">sueldo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="impuesto"><span data-translate="kukulkanmongoApp.direccion.impuesto">impuesto</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="impuestoDetalle"><span data-translate="kukulkanmongoApp.direccion.impuestoDetalle">impuestoDetalle</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="activo"><span data-translate="kukulkanmongoApp.direccion.activo">activo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fechaLocalDate"><span data-translate="kukulkanmongoApp.direccion.fechaLocalDate">fechaLocalDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fechaZoneDateTime"><span data-translate="kukulkanmongoApp.direccion.fechaZoneDateTime">fechaZoneDateTime</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="imagen"><span data-translate="kukulkanmongoApp.direccion.imagen">imagen</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="imagenAnyBlob"><span data-translate="kukulkanmongoApp.direccion.imagenAnyBlob">imagenAnyBlob</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="imagenBlob"><span data-translate="kukulkanmongoApp.direccion.imagenBlob">imagenBlob</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="desc"><span data-translate="kukulkanmongoApp.direccion.desc">desc</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="instante"><span data-translate="kukulkanmongoApp.direccion.instante">instante</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="direccion in vm.direccions track by direccion.id">
+                    <td><a ui-sref="direccion-detail({id:direccion.id})">{{direccion.id}}</a></td>
+					<td>{{direccion.nombre}}</td>
+					<td>{{direccion.edad}}</td>
+					<td>{{direccion.numeroCredencial}}</td>
+					<td>{{direccion.sueldo}}</td>
+					<td>{{direccion.impuesto}}</td>
+					<td>{{direccion.impuestoDetalle}}</td>
+					<td>{{direccion.activo}}</td>
+					<td>{{direccion.fechaLocalDate | date:'mediumDate'}}</td>
+					<td>{{direccion.fechaZoneDateTime | date:'medium'}}</td>
+					<td>
+						<a ng-if="direccion.imagen" ng-click="vm.openFile(direccion.imagenContentType, direccion.imagen)" data-translate="entity.action.open">open</a>
+                        <span ng-if="direccion.imagen">{{direccion.imagenContentType}}, {{vm.byteSize(direccion.imagen)}}</span> 
+					</td>     
+					<td>
+						<a ng-if="direccion.imagenAnyBlob" ng-click="vm.openFile(direccion.imagenAnyBlobContentType, direccion.imagenAnyBlob)" data-translate="entity.action.open">open</a>
+                        <span ng-if="direccion.imagenAnyBlob">{{direccion.imagenAnyBlobContentType}}, {{vm.byteSize(direccion.imagenAnyBlob)}}</span> 
+					</td>     
+					<td>
+						<a ng-if="direccion.imagenBlob" ng-click="vm.openFile(direccion.imagenBlobContentType, direccion.imagenBlob)" data-translate="entity.action.open">open</a>
+                        <span ng-if="direccion.imagenBlob">{{direccion.imagenBlobContentType}}, {{vm.byteSize(direccion.imagenBlob)}}</span> 
+					</td>     
+					<td>{{direccion.desc}}</td>        
+					<td>{{direccion.instante | date:'medium'}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="direccion-detail({id:direccion.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="direccion.edit({id:direccion.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="direccion.delete({id:direccion.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

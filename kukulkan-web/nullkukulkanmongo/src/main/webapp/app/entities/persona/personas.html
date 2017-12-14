@@ -1,0 +1,111 @@
+<div>
+    <h2 data-translate="kukulkanmongoApp.persona.home.title">personas</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="persona.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs-down" data-translate="kukulkanmongoApp.persona.home.createLabel">
+                        Create new Persona
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'kukulkanmongoApp.persona.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="nombre"><span data-translate="kukulkanmongoApp.persona.nombre">nombre</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="edad"><span data-translate="kukulkanmongoApp.persona.edad">edad</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="numeroCredencial"><span data-translate="kukulkanmongoApp.persona.numeroCredencial">numeroCredencial</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sueldo"><span data-translate="kukulkanmongoApp.persona.sueldo">sueldo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="impuesto"><span data-translate="kukulkanmongoApp.persona.impuesto">impuesto</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="impuestoDetalle"><span data-translate="kukulkanmongoApp.persona.impuestoDetalle">impuestoDetalle</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="activo"><span data-translate="kukulkanmongoApp.persona.activo">activo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fechaLocalDate"><span data-translate="kukulkanmongoApp.persona.fechaLocalDate">fechaLocalDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fechaZoneDateTime"><span data-translate="kukulkanmongoApp.persona.fechaZoneDateTime">fechaZoneDateTime</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="imagen"><span data-translate="kukulkanmongoApp.persona.imagen">imagen</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="imagenAnyBlob"><span data-translate="kukulkanmongoApp.persona.imagenAnyBlob">imagenAnyBlob</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="imagenBlob"><span data-translate="kukulkanmongoApp.persona.imagenBlob">imagenBlob</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="desc"><span data-translate="kukulkanmongoApp.persona.desc">desc</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="instante"><span data-translate="kukulkanmongoApp.persona.instante">instante</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="persona in vm.personas track by persona.id">
+                    <td><a ui-sref="persona-detail({id:persona.id})">{{persona.id}}</a></td>
+					<td>{{persona.nombre}}</td>
+					<td>{{persona.edad}}</td>
+					<td>{{persona.numeroCredencial}}</td>
+					<td>{{persona.sueldo}}</td>
+					<td>{{persona.impuesto}}</td>
+					<td>{{persona.impuestoDetalle}}</td>
+					<td>{{persona.activo}}</td>
+					<td>{{persona.fechaLocalDate | date:'mediumDate'}}</td>
+					<td>{{persona.fechaZoneDateTime | date:'medium'}}</td>
+					<td>
+						<a ng-if="persona.imagen" ng-click="vm.openFile(persona.imagenContentType, persona.imagen)" data-translate="entity.action.open">open</a>
+                        <span ng-if="persona.imagen">{{persona.imagenContentType}}, {{vm.byteSize(persona.imagen)}}</span> 
+					</td>     
+					<td>
+						<a ng-if="persona.imagenAnyBlob" ng-click="vm.openFile(persona.imagenAnyBlobContentType, persona.imagenAnyBlob)" data-translate="entity.action.open">open</a>
+                        <span ng-if="persona.imagenAnyBlob">{{persona.imagenAnyBlobContentType}}, {{vm.byteSize(persona.imagenAnyBlob)}}</span> 
+					</td>     
+					<td>
+						<a ng-if="persona.imagenBlob" ng-click="vm.openFile(persona.imagenBlobContentType, persona.imagenBlob)" data-translate="entity.action.open">open</a>
+                        <span ng-if="persona.imagenBlob">{{persona.imagenBlobContentType}}, {{vm.byteSize(persona.imagenBlob)}}</span> 
+					</td>     
+					<td>{{persona.desc}}</td>        
+					<td>{{persona.instante | date:'medium'}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="persona-detail({id:persona.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="persona.edit({id:persona.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="persona.delete({id:persona.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

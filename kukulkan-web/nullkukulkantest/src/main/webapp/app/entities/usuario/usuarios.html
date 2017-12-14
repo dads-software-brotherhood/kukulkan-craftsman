@@ -1,0 +1,111 @@
+<div>
+    <h2 data-translate="kukulkantestApp.usuario.home.title">usuarios</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="usuario.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs-down" data-translate="kukulkantestApp.usuario.home.createLabel">
+                        Create new Usuario
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'kukulkantestApp.usuario.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="activo"><span data-translate="kukulkantestApp.usuario.activo">activo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="edad"><span data-translate="kukulkantestApp.usuario.edad">edad</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fechaLocalDate"><span data-translate="kukulkantestApp.usuario.fechaLocalDate">fechaLocalDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fechaZoneDateTime"><span data-translate="kukulkantestApp.usuario.fechaZoneDateTime">fechaZoneDateTime</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="imagen"><span data-translate="kukulkantestApp.usuario.imagen">imagen</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="imagenAnyBlob"><span data-translate="kukulkantestApp.usuario.imagenAnyBlob">imagenAnyBlob</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="imagenBlob"><span data-translate="kukulkantestApp.usuario.imagenBlob">imagenBlob</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="impuesto"><span data-translate="kukulkantestApp.usuario.impuesto">impuesto</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="impuestoDetalle"><span data-translate="kukulkantestApp.usuario.impuestoDetalle">impuestoDetalle</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="instante"><span data-translate="kukulkantestApp.usuario.instante">instante</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="jhiDesc"><span data-translate="kukulkantestApp.usuario.jhiDesc">jhiDesc</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="nombre"><span data-translate="kukulkantestApp.usuario.nombre">nombre</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="numeroCredencial"><span data-translate="kukulkantestApp.usuario.numeroCredencial">numeroCredencial</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sueldo"><span data-translate="kukulkantestApp.usuario.sueldo">sueldo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="usuario in vm.usuarios track by usuario.id">
+                    <td><a ui-sref="usuario-detail({id:usuario.id})">{{usuario.id}}</a></td>
+					<td>{{usuario.activo}}</td>
+					<td>{{usuario.edad}}</td>
+					<td>{{usuario.fechaLocalDate | date:'mediumDate'}}</td>
+					<td>{{usuario.fechaZoneDateTime | date:'medium'}}</td>
+					<td>
+						<a ng-if="usuario.imagen" ng-click="vm.openFile(usuario.imagenContentType, usuario.imagen)" data-translate="entity.action.open">open</a>
+                        <span ng-if="usuario.imagen">{{usuario.imagenContentType}}, {{vm.byteSize(usuario.imagen)}}</span> 
+					</td>     
+					<td>
+						<a ng-if="usuario.imagenAnyBlob" ng-click="vm.openFile(usuario.imagenAnyBlobContentType, usuario.imagenAnyBlob)" data-translate="entity.action.open">open</a>
+                        <span ng-if="usuario.imagenAnyBlob">{{usuario.imagenAnyBlobContentType}}, {{vm.byteSize(usuario.imagenAnyBlob)}}</span> 
+					</td>     
+					<td>
+						<a ng-if="usuario.imagenBlob" ng-click="vm.openFile(usuario.imagenBlobContentType, usuario.imagenBlob)" data-translate="entity.action.open">open</a>
+                        <span ng-if="usuario.imagenBlob">{{usuario.imagenBlobContentType}}, {{vm.byteSize(usuario.imagenBlob)}}</span> 
+					</td>     
+					<td>{{usuario.impuesto}}</td>
+					<td>{{usuario.impuestoDetalle}}</td>
+					<td>{{usuario.instante | date:'medium'}}</td>
+					<td>{{usuario.jhiDesc}}</td>
+					<td>{{usuario.nombre}}</td>
+					<td>{{usuario.numeroCredencial}}</td>
+					<td>{{usuario.sueldo}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="usuario-detail({id:usuario.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="usuario.edit({id:usuario.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="usuario.delete({id:usuario.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>
