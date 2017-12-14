@@ -42,10 +42,5 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<pluginManagement>
-			<plugins>
-
-			</plugins>
-		</pluginManagement>
 	</build>
 </project>

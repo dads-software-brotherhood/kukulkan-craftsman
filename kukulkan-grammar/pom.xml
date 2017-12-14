@@ -13,9 +13,6 @@
 		<antlr4.plugin.version>4.5.2</antlr4.plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-
-
-
 	<build>
 		<plugins>
 			<plugin>
@@ -67,5 +64,4 @@
 			<version>[0.0.1,)</version>
 		</dependency>
 	</dependencies>
-	
 </project>
