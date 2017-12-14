@@ -9,6 +9,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>kukulkan-metamodel</module>
         <module>kukulkan-grammar</module>
         <module>kukulkan-web</module>
     </modules>
