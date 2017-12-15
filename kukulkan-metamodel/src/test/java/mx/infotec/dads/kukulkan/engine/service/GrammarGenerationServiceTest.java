@@ -65,71 +65,72 @@ import mx.infotec.dads.kukulkan.engine.util.PKGenerationStrategy;
 @DirtiesContext
 public class GrammarGenerationServiceTest {
 
-	@Autowired
-	private GenerationService generationService;
-	@Autowired
-	private RuleRepository ruleRepository;
-	@Autowired
-	private LayerTaskFactory layerTaskFactory;
-	@Autowired
-	private RuleTypeRepository ruleTypeRepository;
+    @Autowired
+    private GenerationService generationService;
+    @Autowired
+    private RuleRepository ruleRepository;
+    @Autowired
+    private LayerTaskFactory layerTaskFactory;
+    @Autowired
+    private RuleTypeRepository ruleTypeRepository;
 
-	@Autowired
-	private KukulkanConfigurationProperties prop;
+    @Autowired
+    private KukulkanConfigurationProperties prop;
 
-	@BeforeClass
-	public static void runOnceBeforeClass() {
+    @BeforeClass
+    public static void runOnceBeforeClass() {
 
-	}
+    }
 
-	@Test
-	public void generationService() {
-		System.out.println("hola mudno"+prop.getConfig().getOutputdir());
-		Rule rule = new Rule();
-		RuleType ruleType = ruleTypeRepository.findAll().get(0);
-		ruleType.setName("singular");
-		rule.setRuleType(ruleType);
-		Example<Rule> ruleExample = Example.of(rule);
-		List<Rule> rulesList = ruleRepository.findAll(ruleExample);
-		for (Rule item : rulesList) {
-			InflectorProcessor.getInstance().addSingularize(item.getExpression(), item.getReplacement());
-		}
-		System.out.println("hola mudno"+prop.getConfig().getOutputdir());
+    @Test
+    public void generationService() {
+        System.out.println("hola mudno" + prop.getConfig().getOutputdir());
+        Rule rule = new Rule();
+        RuleType ruleType = ruleTypeRepository.findAll().get(0);
+        ruleType.setName("singular");
+        rule.setRuleType(ruleType);
+        Example<Rule> ruleExample = Example.of(rule);
+        List<Rule> rulesList = ruleRepository.findAll(ruleExample);
+        for (Rule item : rulesList) {
+            InflectorProcessor.getInstance().addSingularize(item.getExpression(), item.getReplacement());
+        }
+        System.out.println("hola mudno" + prop.getConfig().getOutputdir());
 
-		// Create ProjectConfiguration
-		ProjectConfiguration pConf = new ProjectConfiguration();
-		pConf.setId("kukulkanmongo");
-		pConf.setGroupId("mx.infotec.dads.mongo");
-		pConf.setVersion("1.0.0");
-		pConf.setPackaging("mx.infotec.dads.mongo");
-		pConf.setYear("2017");
-		pConf.setAuthor("KUKULKAN");
-		pConf.setWebLayerName("web.rest");
-		pConf.setServiceLayerName("service");
-		pConf.setDaoLayerName("repository");
-		pConf.setDomainLayerName("domain");
-		pConf.setMongoDb(true);
-		pConf.setGlobalGenerationType(PKGenerationStrategy.SEQUENCE);
-		// Create DataStore	
+        // Create ProjectConfiguration
+        ProjectConfiguration pConf = new ProjectConfiguration();
+        pConf.setId("kukulkanmongo");
+        pConf.setGroupId("mx.infotec.dads.mongo");
+        pConf.setVersion("1.0.0");
+        pConf.setPackaging("mx.infotec.dads.mongo");
+        pConf.setYear("2017");
+        pConf.setAuthor("KUKULKAN");
+        pConf.setWebLayerName("web.rest");
+        pConf.setServiceLayerName("service");
+        pConf.setDaoLayerName("repository");
+        pConf.setDomainLayerName("domain");
+        pConf.setMongoDb(true);
+        pConf.setGlobalGenerationType(PKGenerationStrategy.SEQUENCE);
+        // Create DataStore
 
-		// Create DataModel
-		DomainModel dataModel = new JavaDomainModel();
-		KukulkanVisitor semanticAnalyzer = new KukulkanVisitor();
+        // Create DataModel
+        DomainModel dataModel = new JavaDomainModel();
+        KukulkanVisitor semanticAnalyzer = new KukulkanVisitor();
 
-		// Mapping DataContext into DataModel
-		List<DomainModelGroup> dmgList = GrammarMapping.createSingleDataModelGroupList(semanticAnalyzer);
-		dataModel.setDomainModelGroup(dmgList);
-		// Create GeneratorContext
-		GeneratorContext genCtx = new GeneratorContext(dataModel, pConf);
-		// Process Activities
-		generationService.process(genCtx, layerTaskFactory.getLayerTaskSet(ArchetypeType.ANGULAR_SPRING));
-		System.out.println("hola mudno"+prop.getConfig().getOutputdir());
+        // Mapping DataContext into DataModel
+        List<DomainModelGroup> dmgList = GrammarMapping.createSingleDataModelGroupList(semanticAnalyzer);
+        dataModel.setDomainModelGroup(dmgList);
+        // Create GeneratorContext
+        GeneratorContext genCtx = new GeneratorContext(dataModel, pConf);
+        // Process Activities
+        generationService.process(genCtx, layerTaskFactory.getLayerTaskSet(ArchetypeType.ANGULAR_SPRING));
+        System.out.println("hola mudno" + prop.getConfig().getOutputdir());
 
-		FileUtil.saveToFile(genCtx);
-		// System.out.println(Paths.get(prop.getOutputdir() + "/" +
-		// pConf.getId()));
-		//FileUtil.createZip(Paths.get(prop.getConfig().getOutputdir() + "/" + pConf.getId()), "physicalArchitecture");
-		System.out.println("Bye"+prop.getConfig().getOutputdir());
+        FileUtil.saveToFile(genCtx);
+        // System.out.println(Paths.get(prop.getOutputdir() + "/" +
+        // pConf.getId()));
+        // FileUtil.createZip(Paths.get(prop.getConfig().getOutputdir() + "/" +
+        // pConf.getId()), "physicalArchitecture");
+        System.out.println("Bye" + prop.getConfig().getOutputdir());
 
-	}
+    }
 }

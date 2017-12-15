@@ -12,11 +12,9 @@
 	<artifactId>kukulkancraftsman</artifactId>
 	<version>0.1.0</version>
 	<packaging>pom</packaging>
-
 	<modules>
-		<module>kukulkan-metamodel</module>
 		<module>kukulkan-grammar</module>
+		<module>kukulkan-metamodel</module>
 		<module>kukulkan-web</module>
 	</modules>
-
 </project>
