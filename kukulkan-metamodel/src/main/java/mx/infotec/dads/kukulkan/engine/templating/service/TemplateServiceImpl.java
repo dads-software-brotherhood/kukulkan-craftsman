@@ -39,13 +39,13 @@ import org.springframework.stereotype.Service;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import mx.infotec.dads.kukulkan.engine.KukulkanConfigurationProperties;
 import mx.infotec.dads.kukulkan.engine.domain.core.DomainModel;
 import mx.infotec.dads.kukulkan.engine.domain.core.DomainModelElement;
 import mx.infotec.dads.kukulkan.engine.domain.core.GeneratedElement;
 import mx.infotec.dads.kukulkan.engine.domain.editor.Editor;
 import mx.infotec.dads.kukulkan.engine.util.BasePathEnum;
 import mx.infotec.dads.kukulkan.engine.util.FileUtil;
+import mx.infotec.dads.kukulkan.engine.util.KukulkanConfigurationProperties;
 import mx.infotec.dads.kukulkan.engine.util.MetaModelException;
 import mx.infotec.dads.kukulkan.engine.util.TemplateUtil;
 
