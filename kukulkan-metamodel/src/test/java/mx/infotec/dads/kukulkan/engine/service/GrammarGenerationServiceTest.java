@@ -117,7 +117,7 @@ public class GrammarGenerationServiceTest {
         KukulkanVisitor semanticAnalyzer = new KukulkanVisitor();
 
         // Mapping DataContext into DataModel
-        List<DomainModelGroup> dmgList = GrammarMapping.createSingleDataModelGroupList(semanticAnalyzer);
+        List<DomainModelGroup> dmgList = GrammarMapping.createSingleTestDataModelGroupList(semanticAnalyzer);
         dataModel.setDomainModelGroup(dmgList);
         // Create GeneratorContext
         GeneratorContext genCtx = new GeneratorContext(dataModel, pConf);

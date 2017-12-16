@@ -23,6 +23,7 @@
  */
 package mx.infotec.dads.kukulkan.engine.grammar;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -141,8 +142,24 @@ public class GrammarMapping {
      * @return
      * @throws IOException
      */
-    public static List<DomainModelGroup> createSingleDataModelGroupList(KukulkanVisitor visitor) {
+    public static List<DomainModelGroup> createSingleTestDataModelGroupList(KukulkanVisitor visitor) {
         String program = "src/test/resources/grammar/test." + "3k";
+        DomainModelContext tree = GrammarUtil.getDomainModelContext(program);
+        List<DomainModelGroup> dataModelGroupList = new ArrayList<>();
+        dataModelGroupList.add(createDefaultDataModelGroup(tree, visitor));
+        return dataModelGroupList;
+    }
+    
+    /**
+     * createSingleDataModelGroupList
+     * 
+     * @param visitor
+     * @param tablesToProcess
+     * @return
+     * @throws IOException
+     */
+    public static List<DomainModelGroup> createSingleDataModelGroupList(KukulkanVisitor visitor, File file) {
+        String program = file.getAbsolutePath();
         DomainModelContext tree = GrammarUtil.getDomainModelContext(program);
         List<DomainModelGroup> dataModelGroupList = new ArrayList<>();
         dataModelGroupList.add(createDefaultDataModelGroup(tree, visitor));
