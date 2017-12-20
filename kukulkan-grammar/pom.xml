@@ -61,7 +61,15 @@
 		<dependency>
 			<groupId>org.jpavlich</groupId>
 			<artifactId>ast-visualizer</artifactId>
-			<version>[0.0.1,)</version>
+			<version>0.0.1-RELEASE</version>
 		</dependency>
 	</dependencies>
+        
+        <repositories>
+            <repository>
+                <id>infotec</id>
+                <name>INFOTEC Repository</name>
+                <url>http://artifactory.dads.infotec.mx/artifactory/infotec</url>
+            </repository>
+        </repositories>
 </project>
