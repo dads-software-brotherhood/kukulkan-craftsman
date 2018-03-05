@@ -1,0 +1,24 @@
+.d3 li > a {
+    text-decoration: none;
+    background-color: #ddd;
+    border-color: #ddd;
+}
+
+.d3 li > a:hover,
+.d3 li > a:focus {
+    text-decoration: none;
+    background-color: #ddd;
+    border-color: #ddd;
+    box-shadow: 0px 0px 10px 2px #a6b997;
+}
+
+.thumbnail a > img {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+a.thumbnail:hover,
+a.thumbnail:focus,
+a.thumbnail.active {
+    border-color: #ddd;
+}

@@ -33,14 +33,15 @@
 				"main": "Asset",
 				"asset": "Asset"
 			},
-			"reports": {
-				"main": "Reportes",
-				"report": "Reporte Operacional",
-				"reportElement": "Elementos de Reporte",
-				"reportIndicator": "Indicadores",
-				"operation": "Operación",
-				"infrastructure": "Infraestructura"
-			},
+            "reports": {
+                "main": "Reportes",
+                "report": "Reporte Operacional",
+                "reportElement": "Elementos de Reporte",
+                "reportIndicator": "Indicadores",
+                "operation": "Operación",
+                "infrastructure": "Infraestructura",
+                "graphs": "Graphs"
+            },
 			"account": {
 				"main": "Account",
 				"settings": "Settings",

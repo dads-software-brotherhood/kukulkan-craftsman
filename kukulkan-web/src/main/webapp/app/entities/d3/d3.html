@@ -1,0 +1,19 @@
+<div class="content container-fluid">
+    <div class="well">
+        <h1>Graphs</h1>
+        <div class="container container-fluid thumbnails" style="padding-top: 30px; width: 100%">
+            <div class="row d3">
+                <ul style="list-style-type: none; padding: 0px 10px 0px 10px;">
+                    <li class="col-xs-6 col-md-3" ng-repeat="chart in vm.charts">
+                        <a ui-sref="viewGraph({type:chart.href})" class="thumbnail">
+                            <img ng-src="{{ chart.src }}" alt="">
+                            <div class="caption">{{ chart.title }}</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+

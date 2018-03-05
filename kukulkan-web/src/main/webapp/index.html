@@ -16,10 +16,12 @@
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
     <link rel="stylesheet" href="bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.css">
     <link rel="stylesheet" href="bower_components/bootstrap-material-design/dist/css/ripples.css">
+    <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.css">
     <!-- endinject -->
     <!-- endbuild -->
     <!-- build:css content/css/main.css -->
     <link rel="stylesheet" href="content/css/main.css">
+    <link rel="stylesheet" href="content/css/d3.css">
     <!-- endbuild -->
     <link rel="shortcut icon" href="favicon.ico" />
 </head>
@@ -106,6 +108,10 @@
     <script src="bower_components/angular-ui-ace/ui-ace.js"></script>
     <!-- endinject -->
     <!-- endbuild -->
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/d3/d3.min.js"></script>
+    <script src="bower_components/nvd3/build/nv.d3.js"></script> <!-- or use another assembly -->
+    <script src="bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
     <!-- build:js app/app.js  -->
     <!-- inject:js -->
     <script src="app/app.module.js"></script>
@@ -231,6 +237,33 @@
     <script src="app/entities/discipline/discipline.controller.js"></script>
     <script src="app/entities/chat-bot/chat-bot.state.js"></script>
     <script src="app/entities/chat-bot/chat-bot.controller.js"></script>
+    <script src="app/entities/d3/d3.state.js"></script>
+    <script src="app/entities/d3/d3.controller.js"></script>
+    <script src="app/entities/d3/d3.service.js"></script>
+    <script src="app/entities/d3/charts/graph.state.js"></script>
+    <script src="app/entities/d3/charts/graph.controller.js"></script>
+    <script src="app/entities/d3/charts/js/lineChartService.js"></script>
+    <script src="app/entities/d3/charts/js/cumulativeLineService.js"></script>
+    <script src="app/entities/d3/charts/js/stackedAreaService.js"></script>
+    <script src="app/entities/d3/charts/js/multiBarService.js"></script>
+    <script src="app/entities/d3/charts/js/bulletService.js"></script>
+    <script src="app/entities/d3/charts/js/discreteBarService.js"></script>
+    <script src="app/entities/d3/charts/js/historicalBarService.js"></script>
+    <script src="app/entities/d3/charts/js/multiBarHorizontalService.js"></script>
+    <script src="app/entities/d3/charts/js/pieChartService.js"></script>
+    <script src="app/entities/d3/charts/js/scatterService.js"></script>
+    <script src="app/entities/d3/charts/js/lineFocusService.js"></script>
+    <script src="app/entities/d3/charts/js/scatterLineService.js"></script>
+    <script src="app/entities/d3/charts/js/lineBarService.js"></script>
+    <script src="app/entities/d3/charts/js/donutChartService.js"></script>
+    <script src="app/entities/d3/charts/js/sparkLineService.js"></script>
+    <script src="app/entities/d3/charts/js/paralellService.js"></script>
+    <script src="app/entities/d3/charts/js/multiChartService.js"></script>
+    <script src="app/entities/d3/charts/js/candlestickService.js"></script>
+    <script src="app/entities/d3/charts/js/sunburstService.js"></script>
+    <script src="app/entities/d3/charts/js/ohclService.js"></script>
+    <script src="app/entities/d3/charts/js/boxPlotService.js"></script>
+    <script src="app/entities/d3/charts/js/forceDirectedService.js"></script>
     <script src="app/components/util/truncate-words.filter.js"></script>
     <script src="app/components/util/truncate-characters.filter.js"></script>
     <script src="app/components/util/sort-by.directive.js"></script>

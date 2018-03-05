@@ -22,7 +22,8 @@
             'ngCsv',
             'papa-promise',
             // jhipster-needle-angularjs-add-module JHipster will add new module here
-            'angular-loading-bar'
+            'angular-loading-bar',
+            'nvd3'
         ])
         .run(run);
 

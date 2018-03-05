@@ -1,0 +1,109 @@
+{
+    "charts": [
+        {
+            "title": "Line Chart",
+            "href": "lineChart",
+            "src": "content/images/graficasD3/lineChart.png"
+        },
+        {
+            "title": "Cumulative Line Chart",
+            "href": "cumulativeLine",
+            "src": "content/images/graficasD3/cumulativeLineChart.png"
+        },
+        {
+            "title": "Stacked Area Chart",
+            "href": "stackedArea",
+            "src": "content/images/graficasD3/stackedAreaChart.png"
+        },
+        {
+            "title": "MultiBar Chart",
+            "href": "multiBar",
+            "src": "content/images/graficasD3/multiBarChart.png"
+        },
+        {
+            "title": "Bullet Chart",
+            "href": "bullet",
+            "src": "content/images/graficasD3/bulletChart.png"
+        },
+        {
+            "title": "DiscreteBar Chart",
+            "href": "discreteBar",
+            "src": "content/images/graficasD3/discreteBarChart.png"
+        },
+        {
+            "title": "HistoricalBar Chart",
+            "href": "historicalBar",
+            "src": "content/images/graficasD3/historicalBarChart.png"
+        },
+        {
+            "title": "MultiBar Horizontal Chart",
+            "href": "multiBarHorizontal",
+            "src": "content/images/graficasD3/multiBarHorizontalChart.png"
+        },
+        {
+            "title": "Pie Chart",
+            "href": "pieChart",
+            "src": "content/images/graficasD3/pieChart.png"
+        },
+        {
+            "title": "Scatter Chart",
+            "href": "scatter",
+            "src": "content/images/graficasD3/scatterChart.png"
+        },
+        {
+            "title": "Line with Focus Chart",
+            "href": "lineFocus",
+            "src": "content/images/graficasD3/lineWithFocusChart.png"
+        },
+        {
+            "title": "Scatter + Line Chart",
+            "href": "scatterLine",
+            "src": "content/images/graficasD3/scatterPlusLineChart.png"
+        },
+        {
+            "title": "Donut Chart",
+            "href": "donutChart",
+            "src": "content/images/graficasD3/donutChart.png"
+        },
+        {
+            "title": "SparkLine Chart",
+            "href": "sparkLine",
+            "src": "content/images/graficasD3/sparklinePlus.png"
+        },
+        {
+            "title": "Paralell Cordinates",
+            "href": "paralell",
+            "src": "content/images/graficasD3/parallelCoordinates.png"
+        },
+        {
+            "title": "Multi Chart",
+            "href": "multiChart",
+            "src": "content/images/graficasD3/multiChart.png"
+        },
+        {
+            "title": "Candlestick Chart",
+            "href": "candlestick",
+            "src": "content/images/graficasD3/candlestickBarChart.png"
+        },
+        {
+            "title": "Sunburst Chart",
+            "href": "sunburst",
+            "src": "content/images/graficasD3/sunburstChart.png"
+        },
+        {
+            "title": "OHLC Chart",
+            "href": "ohcl",
+            "src": "content/images/graficasD3/ohlcBarChart.png"
+        },
+        {
+            "title": "Box Plot Chart",
+            "href": "boxPlot",
+            "src": "content/images/graficasD3/boxPlotChart.png"
+        },
+        {
+            "title": "Force Directed Graph",
+            "href": "forceDirected",
+            "src": "content/images/graficasD3/forceDirectedGraph.png"
+        }
+    ]
+}
