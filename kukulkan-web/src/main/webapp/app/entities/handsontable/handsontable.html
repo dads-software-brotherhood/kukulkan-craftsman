@@ -1,0 +1,17 @@
+<div class="content container-fluid">
+    <div class="well center">
+        <h1>Handsontable</h1>
+        <hot-table id="my-handsontable" hot-id="my-handsontable" settings="vm.settings" datarows="vm.items">
+            <hot-column data="task" title="'Task'"></hot-column>
+            <hot-column data="owner.name" title="'Owner'" type="'autocomplete'">
+                <hot-autocomplete datarows="name in owner.options"></hot-autocomplete>
+            </hot-column>
+            <hot-column data="team" title="'Team'"></hot-column>
+            <hot-column data="status" title="'Status'"></hot-column>
+            <hot-column data="startDate" title="'Start date'" type="'date'"></hot-column>
+            <hot-column data="endDate" title="'End date'" type="'date'"></hot-column>
+            <hot-column data="risk" title="'At risk'" type="'checkbox'" checked-template="'True'" unchecked-template="'False'"></hot-column>
+            <hot-column data="complete" title="'Complete'" type="'numeric'" format="'0%'"></hot-column>
+        </hot-table>
+    </div>
+</div>

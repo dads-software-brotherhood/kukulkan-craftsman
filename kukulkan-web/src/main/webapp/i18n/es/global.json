@@ -41,7 +41,8 @@
                 "reportIndicator": "Indicadores",
                 "operation": "Operación",
                 "infrastructure": "Infraestructura",
-                "graphs": "Gráficas"
+                "graphs": "Gráficas",
+                "handsontable":"Handsontable"
             },
 			"account": {
 				"main": "Cuenta",

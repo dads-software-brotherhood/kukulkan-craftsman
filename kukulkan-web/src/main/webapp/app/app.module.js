@@ -23,7 +23,8 @@
             'papa-promise',
             // jhipster-needle-angularjs-add-module JHipster will add new module here
             'angular-loading-bar',
-            'nvd3'
+            'nvd3',
+            'ngHandsontable'
         ])
         .run(run);
 

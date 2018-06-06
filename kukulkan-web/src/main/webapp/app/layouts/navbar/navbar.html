@@ -114,9 +114,17 @@
                                 </span>
                             </a>
                         </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="handsontable"
+                               ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-list-alt"></span>&nbsp; <span data-translate="global.menu.reports.handsontable">
+                                    Handsontable
+                                </span>
+                            </a>
+                        </li>
 					</ul></li>
 
-				<!--  
+				<!--
 				<li ng-class="{active: vm.$state.includes('asset')}" uib-dropdown
 					dropdown ng-switch-when="true" has-authority="ROLE_USER"><a
 					class="dropdown-toggle" uib-dropdown-toggle href=""
