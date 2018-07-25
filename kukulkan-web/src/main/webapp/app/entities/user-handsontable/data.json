@@ -1,0 +1,21 @@
+{
+    "rowHeaders": true,
+    "colHeaders": ["ID","Login","Email","Language","Profiles","Created date","Modified by","Modified date"],
+    "afterChange": true,
+    "dropdownMenu": true,
+    "filters": true,
+    "height": 440,
+    "contextMenu": true,
+    "minSpareRows": true,
+    "columnSorting": true,
+    "colWidths": 125,
+    "rowHeights": 25,
+    "minRows": 20,
+    "data": [],
+    "columns": [
+        {
+            "dateFormat": "DD/MM/YYYY",
+            "allowEmpty": true
+        }
+    ]
+}

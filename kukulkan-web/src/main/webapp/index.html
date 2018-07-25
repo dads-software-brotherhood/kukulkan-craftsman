@@ -13,10 +13,11 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="bower_components/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="bower_components/pikaday/css/pikaday.css">
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
     <link rel="stylesheet" href="bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.css">
     <link rel="stylesheet" href="bower_components/bootstrap-material-design/dist/css/ripples.css">
-    <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.css">
+    <link rel="stylesheet" href="bower_components/handsontable/dist/handsontable.css">
     <!-- endinject -->
     <!-- endbuild -->
     <!-- build:css content/css/main.css -->
@@ -31,17 +32,17 @@
     <![endif]-->
     <page-ribbon></page-ribbon>
     <div ui-view="navbar" ng-cloak></div>
-    
+
     <div ui-view="content">
         <!-- Angular views -->
     </div>
 
     <div class="footer" ng-cloak>
         <p data-translate="footer">
-        
+
         </p>
     </div>
-  
+
 
     <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
     <script>
@@ -81,6 +82,10 @@
     <script src="bower_components/ace-builds/src-min-noconflict/mode-html.js"></script>
     <script src="bower_components/ace-builds/src-min-noconflict/theme-idle_fingers.js"></script>
     <script src="bower_components/ace-builds/src-min-noconflict/worker-json.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/numbro/numbro.js"></script>
+    <script src="bower_components/pikaday/pikaday.js"></script>
+    <script src="bower_components/zeroclipboard/dist/ZeroClipboard.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -106,6 +111,8 @@
     <script src="bower_components/angular-papa-promise/dist/angular-papa-promise.js"></script>
     <script src="bower_components/ng-csv/build/ng-csv.min.js"></script>
     <script src="bower_components/angular-ui-ace/ui-ace.js"></script>
+    <script src="bower_components/handsontable/dist/handsontable.js"></script>
+    <script src="bower_components/ngHandsontable/dist/ngHandsontable.js"></script>
     <!-- endinject -->
     <!-- endbuild -->
     <script src="bower_components/d3/d3.js"></script>
@@ -235,35 +242,41 @@
     <script src="app/entities/discipline/discipline.state.js"></script>
     <script src="app/entities/discipline/discipline.service.js"></script>
     <script src="app/entities/discipline/discipline.controller.js"></script>
-    <script src="app/entities/chat-bot/chat-bot.state.js"></script>
-    <script src="app/entities/chat-bot/chat-bot.controller.js"></script>
     <script src="app/entities/d3/d3.state.js"></script>
-    <script src="app/entities/d3/d3.controller.js"></script>
     <script src="app/entities/d3/d3.service.js"></script>
+    <script src="app/entities/d3/d3.controller.js"></script>
+    <script src="app/entities/d3/charts/js/sunburstService.js"></script>
+    <script src="app/entities/d3/charts/js/stackedAreaService.js"></script>
+    <script src="app/entities/d3/charts/js/sparkLineService.js"></script>
+    <script src="app/entities/d3/charts/js/scatterService.js"></script>
+    <script src="app/entities/d3/charts/js/scatterLineService.js"></script>
+    <script src="app/entities/d3/charts/js/pieChartService.js"></script>
+    <script src="app/entities/d3/charts/js/paralellService.js"></script>
+    <script src="app/entities/d3/charts/js/ohclService.js"></script>
+    <script src="app/entities/d3/charts/js/multiChartService.js"></script>
+    <script src="app/entities/d3/charts/js/multiBarService.js"></script>
+    <script src="app/entities/d3/charts/js/multiBarHorizontalService.js"></script>
+    <script src="app/entities/d3/charts/js/lineFocusService.js"></script>
+    <script src="app/entities/d3/charts/js/lineChartService.js"></script>
+    <script src="app/entities/d3/charts/js/lineBarService.js"></script>
+    <script src="app/entities/d3/charts/js/historicalBarService.js"></script>
+    <script src="app/entities/d3/charts/js/forceDirectedService.js"></script>
+    <script src="app/entities/d3/charts/js/donutChartService.js"></script>
+    <script src="app/entities/d3/charts/js/discreteBarService.js"></script>
+    <script src="app/entities/d3/charts/js/cumulativeLineService.js"></script>
+    <script src="app/entities/d3/charts/js/candlestickService.js"></script>
+    <script src="app/entities/d3/charts/js/bulletService.js"></script>
+    <script src="app/entities/d3/charts/js/boxPlotService.js"></script>
     <script src="app/entities/d3/charts/graph.state.js"></script>
     <script src="app/entities/d3/charts/graph.controller.js"></script>
-    <script src="app/entities/d3/charts/js/lineChartService.js"></script>
-    <script src="app/entities/d3/charts/js/cumulativeLineService.js"></script>
-    <script src="app/entities/d3/charts/js/stackedAreaService.js"></script>
-    <script src="app/entities/d3/charts/js/multiBarService.js"></script>
-    <script src="app/entities/d3/charts/js/bulletService.js"></script>
-    <script src="app/entities/d3/charts/js/discreteBarService.js"></script>
-    <script src="app/entities/d3/charts/js/historicalBarService.js"></script>
-    <script src="app/entities/d3/charts/js/multiBarHorizontalService.js"></script>
-    <script src="app/entities/d3/charts/js/pieChartService.js"></script>
-    <script src="app/entities/d3/charts/js/scatterService.js"></script>
-    <script src="app/entities/d3/charts/js/lineFocusService.js"></script>
-    <script src="app/entities/d3/charts/js/scatterLineService.js"></script>
-    <script src="app/entities/d3/charts/js/lineBarService.js"></script>
-    <script src="app/entities/d3/charts/js/donutChartService.js"></script>
-    <script src="app/entities/d3/charts/js/sparkLineService.js"></script>
-    <script src="app/entities/d3/charts/js/paralellService.js"></script>
-    <script src="app/entities/d3/charts/js/multiChartService.js"></script>
-    <script src="app/entities/d3/charts/js/candlestickService.js"></script>
-    <script src="app/entities/d3/charts/js/sunburstService.js"></script>
-    <script src="app/entities/d3/charts/js/ohclService.js"></script>
-    <script src="app/entities/d3/charts/js/boxPlotService.js"></script>
-    <script src="app/entities/d3/charts/js/forceDirectedService.js"></script>
+    <script src="app/entities/chat-bot/chat-bot.state.js"></script>
+    <script src="app/entities/chat-bot/chat-bot.controller.js"></script>
+    <script src="app/entities/handsontable/handsontable.state.js"></script>
+    <script src="app/entities/handsontable/handsontable.service.js"></script>
+    <script src="app/entities/handsontable/handsontable.controller.js"></script>
+    <script src="app/entities/user-handsontable/user-handsontable.state.js"></script>
+    <script src="app/entities/user-handsontable/user-handsontable.service.js"></script>
+    <script src="app/entities/user-handsontable/user-handsontable.controller.js"></script>
     <script src="app/components/util/truncate-words.filter.js"></script>
     <script src="app/components/util/truncate-characters.filter.js"></script>
     <script src="app/components/util/sort-by.directive.js"></script>
