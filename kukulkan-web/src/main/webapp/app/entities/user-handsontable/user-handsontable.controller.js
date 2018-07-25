@@ -15,6 +15,8 @@
 
       UserHandsontable.getData().then(function (response) {
         hotInstance.updateSettings({
+          data: response.data.data,
+          columns: response.data.columns,
           colHeaders: response.data.colHeaders,
           rowHeaders: true,
           afterChange: true,
@@ -24,7 +26,7 @@
           contextMenu: true,
           minSpareRows: true,
           columnSorting: true,
-          colWidths: 146,
+          colWidths: 140,
           rowHeights: 25,
           filters: true,
           minRows: 20,

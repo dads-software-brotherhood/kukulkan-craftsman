@@ -74,9 +74,8 @@
         },
         {
             "data": "",
-            "type": "checkbox",
-            "checkedTemplate": "Activated",
-            "uncheckedTemplate": "Deactivated"
+            "type": "text",
+            "readOnly": true
         },
         {
             "data": "Language",
