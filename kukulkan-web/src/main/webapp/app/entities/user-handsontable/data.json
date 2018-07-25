@@ -1,6 +1,6 @@
 {
     "rowHeaders": true,
-    "colHeaders": ["ID","Login","Email","Language","Profiles","Created date","Modified by","Modified date"],
+    "colHeaders": ["ID","Login","Email","","Language","Profiles","Created date","Modified by","Modified date"],
     "afterChange": true,
     "dropdownMenu": true,
     "filters": true,
@@ -11,11 +11,50 @@
     "colWidths": 125,
     "rowHeights": 25,
     "minRows": 20,
-    "data": [],
-    "columns": [
+    "data": [
         {
-            "dateFormat": "DD/MM/YYYY",
-            "allowEmpty": true
+            "ID": "user-33",
+            "Login": "admin",
+            "Email": "admin@infotec.mx",
+            "": "Activated",
+            "Language": "es",
+            "Profiles": "ROLE_USER",
+            "Created date": "14/02/18 14:05",
+            "Modified by": "system",
+            "Modified date": "25/07/18 17:05"
+        },
+        {
+            "ID": "user-1",
+            "Login": "user",
+            "Email": "user@infotec.mx",
+            "": "Activated",
+            "Language": "es",
+            "Profiles": "ROLE_USER",
+            "Created date": "14/02/18 14:05",
+            "Modified by": "system",
+            "Modified date": "25/07/18 17:05"
+        },
+        {
+            "ID": "user-2",
+            "Login": "user0",
+            "Email": "user0@infotec.mx",
+            "": "Activated",
+            "Language": "es",
+            "Profiles": "ROLE_USER",
+            "Created date": "14/02/18 14:05",
+            "Modified by": "admin",
+            "Modified date": "25/07/18 17:05"
         }
+    ],
+    "columns": [
+        { "data": "ID", "type": "text", "readOnly": true },
+        { "data": "Login", "type": "text", "readOnly": true},
+        { "data": "Email", "type": "text", "readOnly": true},
+        { "data": "", "type": "checkbox", "checkedTemplate": "Activated","uncheckedTemplate": "Deactivated"},
+        { "data": "Language", "type": "text", "readOnly": true},
+        { "data": "Profiles", "type": "text", "readOnly": true},
+        { "data": "Created date", "type": "text", "readOnly": true},
+        { "data": "Modified by", "type": "text", "readOnly": true},
+        { "data": "Modified date", "type": "text", "readOnly": true}
     ]
 }
