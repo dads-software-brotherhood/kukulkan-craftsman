@@ -1,6 +1,16 @@
 {
     "rowHeaders": true,
-    "colHeaders": ["ID","Login","Email","","Language","Profiles","Created date","Modified by","Modified date"],
+    "colHeaders": [
+        "ID",
+        "Login",
+        "Email",
+        "",
+        "Language",
+        "Profiles",
+        "Created date",
+        "Modified by",
+        "Modified date"
+    ],
     "afterChange": true,
     "dropdownMenu": true,
     "filters": true,
@@ -47,14 +57,51 @@
         }
     ],
     "columns": [
-        { "data": "ID", "type": "text", "readOnly": true },
-        { "data": "Login", "type": "text", "readOnly": true},
-        { "data": "Email", "type": "text", "readOnly": true},
-        { "data": "", "type": "checkbox", "checkedTemplate": "Activated","uncheckedTemplate": "Deactivated"},
-        { "data": "Language", "type": "text", "readOnly": true},
-        { "data": "Profiles", "type": "text", "readOnly": true},
-        { "data": "Created date", "type": "text", "readOnly": true},
-        { "data": "Modified by", "type": "text", "readOnly": true},
-        { "data": "Modified date", "type": "text", "readOnly": true}
+        {
+            "data": "ID",
+            "type": "text",
+            "readOnly": true
+        },
+        {
+            "data": "Login",
+            "type": "text",
+            "readOnly": true
+        },
+        {
+            "data": "Email",
+            "type": "text",
+            "readOnly": true
+        },
+        {
+            "data": "",
+            "type": "checkbox",
+            "checkedTemplate": "Activated",
+            "uncheckedTemplate": "Deactivated"
+        },
+        {
+            "data": "Language",
+            "type": "text",
+            "readOnly": true
+        },
+        {
+            "data": "Profiles",
+            "type": "text",
+            "readOnly": true
+        },
+        {
+            "data": "Created date",
+            "type": "text",
+            "readOnly": true
+        },
+        {
+            "data": "Modified by",
+            "type": "text",
+            "readOnly": true
+        },
+        {
+            "data": "Modified date",
+            "type": "text",
+            "readOnly": true
+        }
     ]
 }
