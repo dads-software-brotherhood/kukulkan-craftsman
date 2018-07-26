@@ -4,7 +4,7 @@
         "ID",
         "Login",
         "Email",
-        "",
+        "Active",
         "Language",
         "Profiles",
         "Created date",
@@ -23,82 +23,82 @@
     "minRows": 20,
     "data": [
         {
-            "ID": "user-33",
-            "Login": "admin",
-            "Email": "admin@infotec.mx",
-            "": "Activated",
-            "Language": "es",
-            "Profiles": "ROLE_USER",
-            "Created date": "14/02/18 14:05",
-            "Modified by": "system",
-            "Modified date": "25/07/18 17:05"
+            "id": "user-33",
+            "login": "admin",
+            "email": "admin@infotec.mx",
+            "active": "true",
+            "language": "es",
+            "profiles": "ROLE_USER",
+            "createdDate": "14/02/18 14:05",
+            "modifiedBy": "system",
+            "modifiedDate": "25/07/18 17:05"
         },
         {
-            "ID": "user-1",
-            "Login": "user",
-            "Email": "user@infotec.mx",
-            "": "Activated",
-            "Language": "es",
-            "Profiles": "ROLE_USER",
-            "Created date": "14/02/18 14:05",
-            "Modified by": "system",
-            "Modified date": "25/07/18 17:05"
+            "id": "user-1",
+            "login": "user",
+            "email": "user@infotec.mx",
+            "active": "true",
+            "language": "es",
+            "profiles": "ROLE_USER",
+            "createdDate": "14/02/18 14:05",
+            "modifiedBy": "system",
+            "modifiedDate": "25/07/18 17:05"
         },
         {
-            "ID": "user-2",
-            "Login": "user0",
-            "Email": "user0@infotec.mx",
-            "": "Activated",
-            "Language": "es",
-            "Profiles": "ROLE_USER",
-            "Created date": "14/02/18 14:05",
-            "Modified by": "admin",
-            "Modified date": "25/07/18 17:05"
+            "id": "user-2",
+            "login": "user0",
+            "email": "user0@infotec.mx",
+            "active": "true",
+            "language": "es",
+            "profiles": "ROLE_USER",
+            "createdDate": "14/02/18 14:05",
+            "modifiedBy": "admin",
+            "modifiedDate": "25/07/18 17:05"
         }
     ],
     "columns": [
         {
-            "data": "ID",
+            "data": "id",
             "type": "text",
             "readOnly": true
         },
         {
-            "data": "Login",
+            "data": "login",
             "type": "text",
             "readOnly": true
         },
         {
-            "data": "Email",
+            "data": "email",
             "type": "text",
             "readOnly": true
         },
         {
-            "data": "",
+            "data": "active",
+            "type": "checkbox",
+            "readOnly": true
+        },
+        {
+            "data": "language",
             "type": "text",
             "readOnly": true
         },
         {
-            "data": "Language",
+            "data": "profiles",
             "type": "text",
             "readOnly": true
         },
         {
-            "data": "Profiles",
+            "data": "createdDate",
             "type": "text",
             "readOnly": true
         },
         {
-            "data": "Created date",
+            "data": "modifiedBy",
             "type": "text",
             "readOnly": true
         },
         {
-            "data": "Modified by",
-            "type": "text",
-            "readOnly": true
-        },
-        {
-            "data": "Modified date",
+            "data": "modifiedDate",
             "type": "text",
             "readOnly": true
         }
