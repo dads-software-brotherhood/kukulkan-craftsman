@@ -1,4 +1,5 @@
 {
+    "readOnly": true,
     "rowHeaders": true,
     "colHeaders": [
         "ID",
@@ -11,9 +12,6 @@
         "Modified by",
         "Modified date"
     ],
-    "afterChange": true,
-    "dropdownMenu": true,
-    "filters": true,
     "height": 440,
     "contextMenu": true,
     "minSpareRows": true,
@@ -59,48 +57,39 @@
     "columns": [
         {
             "data": "id",
-            "type": "text",
-            "readOnly": true
+            "type": "numeric"
         },
         {
             "data": "login",
-            "type": "text",
-            "readOnly": true
+            "type": "text"
         },
         {
             "data": "email",
-            "type": "text",
-            "readOnly": true
+            "type": "text"
         },
         {
-            "data": "active",
-            "type": "checkbox",
-            "readOnly": true
+            "data": "activated",
+            "type": "checkbox"
         },
         {
-            "data": "language",
-            "type": "text",
-            "readOnly": true
+            "data": "langKey",
+            "type": "text"
         },
         {
-            "data": "profiles",
-            "type": "text",
-            "readOnly": true
+            "data": "authorities",
+            "type": "text"
         },
         {
             "data": "createdDate",
-            "type": "text",
-            "readOnly": true
+            "type": "date"
         },
         {
-            "data": "modifiedBy",
-            "type": "text",
-            "readOnly": true
+            "data": "lastModifiedBy",
+            "type": "text"
         },
         {
-            "data": "modifiedDate",
-            "type": "text",
-            "readOnly": true
+            "data": "lastModifiedDate",
+            "type": "date"
         }
     ]
 }
