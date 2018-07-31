@@ -8,12 +8,15 @@ import mx.infotec.dads.kukulkan.repository.UserRepository;
 import mx.infotec.dads.kukulkan.security.AuthoritiesConstants;
 import mx.infotec.dads.kukulkan.security.SecurityUtils;
 import mx.infotec.dads.kukulkan.service.util.RandomUtil;
+import mx.infotec.dads.kukulkan.tables.handsontable.Handsontable;
+import mx.infotec.dads.kukulkan.tables.handsontable.HandsontableBuilder;
 import mx.infotec.dads.kukulkan.service.dto.UserDTO;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -37,7 +40,8 @@ public class UserService {
 
     private final AuthorityRepository authorityRepository;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, SocialService socialService, AuthorityRepository authorityRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, SocialService socialService,
+            AuthorityRepository authorityRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.socialService = socialService;
@@ -46,47 +50,42 @@ public class UserService {
 
     public Optional<User> activateRegistration(String key) {
         log.debug("Activating user for activation key {}", key);
-        return userRepository.findOneByActivationKey(key)
-            .map(user -> {
-                // activate given user for the registration key.
-                user.setActivated(true);
-                user.setActivationKey(null);
-                userRepository.save(user);
-                log.debug("Activated user: {}", user);
-                return user;
-            });
+        return userRepository.findOneByActivationKey(key).map(user -> {
+            // activate given user for the registration key.
+            user.setActivated(true);
+            user.setActivationKey(null);
+            userRepository.save(user);
+            log.debug("Activated user: {}", user);
+            return user;
+        });
     }
 
     public Optional<User> completePasswordReset(String newPassword, String key) {
-       log.debug("Reset user password for reset key {}", key);
+        log.debug("Reset user password for reset key {}", key);
 
-       return userRepository.findOneByResetKey(key)
-            .filter(user -> {
-                ZonedDateTime oneDayAgo = ZonedDateTime.now().minusHours(24);
-                return user.getResetDate().isAfter(oneDayAgo);
-           })
-           .map(user -> {
-                user.setPassword(passwordEncoder.encode(newPassword));
-                user.setResetKey(null);
-                user.setResetDate(null);
-                userRepository.save(user);
-                return user;
-           });
+        return userRepository.findOneByResetKey(key).filter(user -> {
+            ZonedDateTime oneDayAgo = ZonedDateTime.now().minusHours(24);
+            return user.getResetDate().isAfter(oneDayAgo);
+        }).map(user -> {
+            user.setPassword(passwordEncoder.encode(newPassword));
+            user.setResetKey(null);
+            user.setResetDate(null);
+            userRepository.save(user);
+            return user;
+        });
     }
 
     public Optional<User> requestPasswordReset(String mail) {
-        return userRepository.findOneByEmail(mail)
-            .filter(User::getActivated)
-            .map(user -> {
-                user.setResetKey(RandomUtil.generateResetKey());
-                user.setResetDate(ZonedDateTime.now());
-                userRepository.save(user);
-                return user;
-            });
+        return userRepository.findOneByEmail(mail).filter(User::getActivated).map(user -> {
+            user.setResetKey(RandomUtil.generateResetKey());
+            user.setResetDate(ZonedDateTime.now());
+            userRepository.save(user);
+            return user;
+        });
     }
 
     public User createUser(String login, String password, String firstName, String lastName, String email,
-        String imageUrl, String langKey) {
+            String imageUrl, String langKey) {
 
         User newUser = new User();
         Authority authority = authorityRepository.findOne(AuthoritiesConstants.USER);
@@ -125,9 +124,7 @@ public class UserService {
         }
         if (userDTO.getAuthorities() != null) {
             Set<Authority> authorities = new HashSet<>();
-            userDTO.getAuthorities().forEach(
-                authority -> authorities.add(authorityRepository.findOne(authority))
-            );
+            userDTO.getAuthorities().forEach(authority -> authorities.add(authorityRepository.findOne(authority)));
             user.setAuthorities(authorities);
         }
         String encryptedPassword = passwordEncoder.encode(RandomUtil.generatePassword());
@@ -141,7 +138,8 @@ public class UserService {
     }
 
     /**
-     * Update basic information (first name, last name, email, language) for the current user.
+     * Update basic information (first name, last name, email, language) for the
+     * current user.
      */
     public void updateUser(String firstName, String lastName, String email, String langKey) {
         userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).ifPresent(user -> {
@@ -158,26 +156,21 @@ public class UserService {
      * Update all information for a specific user, and return the modified user.
      */
     public Optional<UserDTO> updateUser(UserDTO userDTO) {
-        return Optional.of(userRepository
-            .findOne(userDTO.getId()))
-            .map(user -> {
-                user.setLogin(userDTO.getLogin());
-                user.setFirstName(userDTO.getFirstName());
-                user.setLastName(userDTO.getLastName());
-                user.setEmail(userDTO.getEmail());
-                user.setImageUrl(userDTO.getImageUrl());
-                user.setActivated(userDTO.isActivated());
-                user.setLangKey(userDTO.getLangKey());
-                Set<Authority> managedAuthorities = user.getAuthorities();
-                managedAuthorities.clear();
-                userDTO.getAuthorities().stream()
-                    .map(authorityRepository::findOne)
-                    .forEach(managedAuthorities::add);
-                userRepository.save(user);
-                log.debug("Changed Information for User: {}", user);
-                return user;
-            })
-            .map(UserDTO::new);
+        return Optional.of(userRepository.findOne(userDTO.getId())).map(user -> {
+            user.setLogin(userDTO.getLogin());
+            user.setFirstName(userDTO.getFirstName());
+            user.setLastName(userDTO.getLastName());
+            user.setEmail(userDTO.getEmail());
+            user.setImageUrl(userDTO.getImageUrl());
+            user.setActivated(userDTO.isActivated());
+            user.setLangKey(userDTO.getLangKey());
+            Set<Authority> managedAuthorities = user.getAuthorities();
+            managedAuthorities.clear();
+            userDTO.getAuthorities().stream().map(authorityRepository::findOne).forEach(managedAuthorities::add);
+            userRepository.save(user);
+            log.debug("Changed Information for User: {}", user);
+            return user;
+        }).map(UserDTO::new);
     }
 
     public void deleteUser(String login) {
@@ -197,7 +190,6 @@ public class UserService {
         });
     }
 
-    
     public Page<UserDTO> getAllManagedUsers(Pageable pageable) {
         return userRepository.findAllByLoginNot(pageable, Constants.ANONYMOUS_USER).map(UserDTO::new);
     }
@@ -214,7 +206,6 @@ public class UserService {
         return userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).orElse(null);
     }
 
-
     /**
      * Not activated users should be automatically deleted after 3 days.
      * <p>
@@ -229,5 +220,12 @@ public class UserService {
             log.debug("Deleting not activated user {}", user.getLogin());
             userRepository.delete(user);
         }
+    }
+
+    public Handsontable<UserDTO> getHandsontable(Pageable page) {
+        Handsontable<UserDTO> table = HandsontableBuilder.createHandsontable(UserDTO.class);
+        table.withData(getAllManagedUsers(page).getContent());
+        return table.withRowHeaders(true).withHeight(440).withContextMenu(true).withMinSpareRows(true)
+                .withColumnSorting(true).withColWidths(125).withRowHeights(25).withMinRows(20).withReadOnly(true);
     }
 }

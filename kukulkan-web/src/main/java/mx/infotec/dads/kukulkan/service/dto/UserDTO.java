@@ -4,6 +4,8 @@ import mx.infotec.dads.kukulkan.config.Constants;
 
 import mx.infotec.dads.kukulkan.domain.Authority;
 import mx.infotec.dads.kukulkan.domain.User;
+import mx.infotec.dads.kukulkan.tables.handsontable.annotations.Sheet;
+import mx.infotec.dads.kukulkan.tables.handsontable.annotations.SheetColumn;
 
 import org.hibernate.validator.constraints.Email;
 
@@ -15,10 +17,13 @@ import java.util.stream.Collectors;
 /**
  * A DTO representing a user, with his authorities.
  */
+@Sheet
 public class UserDTO {
 
+    @SheetColumn(title = "ID", type = "text")
     private String id;
-
+    
+    @SheetColumn(title = "Login", type = "text")
     @Pattern(regexp = Constants.LOGIN_REGEX)
     @Size(min = 1, max = 100)
     private String login;
@@ -29,6 +34,7 @@ public class UserDTO {
     @Size(max = 50)
     private String lastName;
 
+    @SheetColumn(title = "Email", type = "text")
     @Email
     @Size(min = 5, max = 100)
     private String email;
@@ -36,19 +42,25 @@ public class UserDTO {
     @Size(max = 256)
     private String imageUrl;
 
+    @SheetColumn(title = "Active", type = "checkbox")
     private boolean activated = false;
 
+    @SheetColumn(title = "Language", type = "text")
     @Size(min = 2, max = 5)
     private String langKey;
 
     private String createdBy;
 
+    @SheetColumn(title = "Created date", type = "date")
     private ZonedDateTime createdDate;
 
+    @SheetColumn(title = "Modified by", type = "text")
     private String lastModifiedBy;
 
+    @SheetColumn(title = "Modified date", type = "date")
     private ZonedDateTime lastModifiedDate;
 
+    @SheetColumn(title = "Profiles", type = "text")
     private Set<String> authorities;
 
     public UserDTO() {
@@ -56,17 +68,15 @@ public class UserDTO {
     }
 
     public UserDTO(User user) {
-        this(user.getId(), user.getLogin(), user.getFirstName(), user.getLastName(),
-            user.getEmail(), user.getActivated(), user.getImageUrl(), user.getLangKey(),
-            user.getCreatedBy(), user.getCreatedDate(), user.getLastModifiedBy(), user.getLastModifiedDate(),
-            user.getAuthorities().stream().map(Authority::getName)
-                .collect(Collectors.toSet()));
+        this(user.getId(), user.getLogin(), user.getFirstName(), user.getLastName(), user.getEmail(),
+                user.getActivated(), user.getImageUrl(), user.getLangKey(), user.getCreatedBy(), user.getCreatedDate(),
+                user.getLastModifiedBy(), user.getLastModifiedDate(),
+                user.getAuthorities().stream().map(Authority::getName).collect(Collectors.toSet()));
     }
 
-    public UserDTO(String id, String login, String firstName, String lastName,
-        String email, boolean activated, String imageUrl, String langKey,
-        String createdBy, ZonedDateTime createdDate, String lastModifiedBy, ZonedDateTime lastModifiedDate,
-        Set<String> authorities) {
+    public UserDTO(String id, String login, String firstName, String lastName, String email, boolean activated,
+            String imageUrl, String langKey, String createdBy, ZonedDateTime createdDate, String lastModifiedBy,
+            ZonedDateTime lastModifiedDate, Set<String> authorities) {
 
         this.id = id;
         this.login = login;
@@ -149,19 +159,10 @@ public class UserDTO {
 
     @Override
     public String toString() {
-        return "UserDTO{" +
-            "login='" + login + '\'' +
-            ", firstName='" + firstName + '\'' +
-            ", lastName='" + lastName + '\'' +
-            ", email='" + email + '\'' +
-            ", imageUrl='" + imageUrl + '\'' +
-            ", activated=" + activated +
-            ", langKey='" + langKey + '\'' +
-            ", createdBy=" + createdBy +
-            ", createdDate=" + createdDate +
-            ", lastModifiedBy='" + lastModifiedBy + '\'' +
-            ", lastModifiedDate=" + lastModifiedDate +
-            ", authorities=" + authorities +
-            "}";
+        return "UserDTO{" + "login='" + login + '\'' + ", firstName='" + firstName + '\'' + ", lastName='" + lastName
+                + '\'' + ", email='" + email + '\'' + ", imageUrl='" + imageUrl + '\'' + ", activated=" + activated
+                + ", langKey='" + langKey + '\'' + ", createdBy=" + createdBy + ", createdDate=" + createdDate
+                + ", lastModifiedBy='" + lastModifiedBy + '\'' + ", lastModifiedDate=" + lastModifiedDate
+                + ", authorities=" + authorities + "}";
     }
 }

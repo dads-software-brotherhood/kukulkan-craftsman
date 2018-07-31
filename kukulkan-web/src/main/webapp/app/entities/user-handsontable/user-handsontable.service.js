@@ -1,17 +1,26 @@
-(function() {
+(function () {
     'use strict';
     angular
         .module('kukulkancraftsmanApp')
-        .factory('UserHandsontable', ['$http',  function ($http) {
+        .factory('UserHandsontable', UserHandsontable);
 
-            return {
-                getData: getData
-            };
+    UserHandsontable.$inject = ['$resource'];
 
-            function getData() {
-                return $http.get('app/entities/user-handsontable/data.json');
+    function UserHandsontable($resource) {
+        var resourceUrl = 'api/users/handsontable';
+
+        return $resource(resourceUrl, {}, {
+            'query': { method: 'GET', isArray: false },
+            'get': {
+                method: 'GET',
+                transformResponse: function (data) {
+                    if (data) {
+                        data = angular.fromJson(data);
+                    }
+                    return data;
+                }
             }
-
-        }]);
+        });
+    }
 })();
 

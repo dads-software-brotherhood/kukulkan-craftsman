@@ -18,9 +18,10 @@
     $scope.$on('$viewContentLoaded', function () {
       var hotInstance = hotRegisterer.getInstance('my-handsontable');
 
-      UserHandsontable.getData().then(function (response) {
-        //Overwrite settings object from service
-        hotInstance.updateSettings(response.data);
+      UserHandsontable.query({}, function (data) {
+        hotInstance.updateSettings(data);
+      }, function () {
+        console.log("ERROR");
       });
     });
   }

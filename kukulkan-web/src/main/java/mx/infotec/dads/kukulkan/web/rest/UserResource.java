@@ -8,6 +8,7 @@ import mx.infotec.dads.kukulkan.security.AuthoritiesConstants;
 import mx.infotec.dads.kukulkan.service.MailService;
 import mx.infotec.dads.kukulkan.service.UserService;
 import mx.infotec.dads.kukulkan.service.dto.UserDTO;
+import mx.infotec.dads.kukulkan.tables.handsontable.Handsontable;
 import mx.infotec.dads.kukulkan.web.rest.vm.ManagedUserVM;
 import mx.infotec.dads.kukulkan.web.rest.util.HeaderUtil;
 import mx.infotec.dads.kukulkan.web.rest.util.PaginationUtil;
@@ -183,5 +184,12 @@ public class UserResource {
         log.debug("REST request to delete User: {}", login);
         userService.deleteUser(login);
         return ResponseEntity.ok().headers(HeaderUtil.createAlert( "userManagement.deleted", login)).build();
+    }
+    
+    @GetMapping("/users/handsontable")
+    @Timed
+    public Handsontable<UserDTO> getHandsontableUsers(@ApiParam Pageable pageable) {
+        log.debug("REST request to get User Handsontable");
+        return userService.getHandsontable(pageable);
     }
 }
