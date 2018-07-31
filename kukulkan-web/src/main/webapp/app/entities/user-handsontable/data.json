@@ -1,5 +1,4 @@
 {
-    "readOnly": true,
     "rowHeaders": true,
     "colHeaders": [
         "ID",
@@ -10,7 +9,10 @@
         "Profiles",
         "Created date",
         "Modified by",
-        "Modified date"
+        "Modified date",
+        "Modified time",
+        "Project",
+        "Password"
     ],
     "height": 440,
     "contextMenu": true,
@@ -18,46 +20,57 @@
     "columnSorting": true,
     "colWidths": 125,
     "rowHeights": 25,
-    "minRows": 20,
     "data": [
         {
-            "id": "user-33",
+            "id": "584530033",
             "login": "admin",
             "email": "admin@infotec.mx",
             "active": "true",
             "language": "es",
             "profiles": "ROLE_USER",
-            "createdDate": "14/02/18 14:05",
+            "createdDate": "14/02/18",
             "modifiedBy": "system",
-            "modifiedDate": "25/07/18 17:05"
+            "modifiedDate": "25/07/18 11:32",
+            "modifiedTime": "11:56:01",
+            "password": "plainTextPassword",
+            "projectSelected": "SIGAIF"
         },
         {
-            "id": "user-1",
+            "id": "584530032",
             "login": "user",
             "email": "user@infotec.mx",
-            "active": "true",
+            "active": "false",
             "language": "es",
             "profiles": "ROLE_USER",
-            "createdDate": "14/02/18 14:05",
+            "createdDate": "15/05/18",
             "modifiedBy": "system",
-            "modifiedDate": "25/07/18 17:05"
+            "modifiedDate": "25/05/18 17:05",
+            "modifiedTime": "17:23:01",
+            "password": "hola_mundo",
+            "projectSelected": "SECTUR"
         },
         {
-            "id": "user-2",
+            "id": "584530031",
             "login": "user0",
             "email": "user0@infotec.mx",
             "active": "true",
             "language": "es",
             "profiles": "ROLE_USER",
-            "createdDate": "14/02/18 14:05",
+            "createdDate": "16/07/18",
             "modifiedBy": "admin",
-            "modifiedDate": "25/07/18 17:05"
+            "modifiedDate": "25/07/18 23:23",
+            "modifiedTime": "23:05:01",
+            "password": "contraseñaSegura458",
+            "projectSelected": "INEE"
+
         }
     ],
     "columns": [
         {
             "data": "id",
-            "type": "numeric"
+            "type": "numeric",
+            "readOnly": true,
+            "className": "htCenter"
         },
         {
             "data": "login",
@@ -68,28 +81,81 @@
             "type": "text"
         },
         {
-            "data": "activated",
-            "type": "checkbox"
+            "data": "active",
+            "type": "checkbox",
+            "className": "htCenter"
         },
         {
-            "data": "langKey",
-            "type": "text"
+            "data": "language",
+            "type": "dropdown",
+            "className": "htCenter",
+            "source": ["en", "es"]
         },
         {
-            "data": "authorities",
-            "type": "text"
+            "data": "profiles",
+            "type": "autocomplete",
+            "source": ["ROLE_USER", "ROLE_ADMIN", "ROL_VIEWER"]
         },
         {
             "data": "createdDate",
-            "type": "date"
+            "type": "date",
+            "dateFormat": "DD/MM/YY"
         },
         {
-            "data": "lastModifiedBy",
-            "type": "text"
+            "data": "modifiedBy",
+            "type": "text",
+            "readOnly": true
         },
         {
-            "data": "lastModifiedDate",
-            "type": "date"
+            "data": "modifiedDate",
+            "type": "text",
+            "readOnly": true
+        },
+        {
+            "data": "modifiedTime",
+            "type": "time",
+            "timeFormat": "hh:mm:ss",
+            "readOnly": true
+        },
+        {
+            "data": "projectSelected",
+            "type": "handsontable",
+            "handsontable": {
+                "colHeaders": ["Name", "Team Leader", "Status"],
+                "autoColumnSize": true,
+                "data":  [
+                    {
+                        "name": "SIGAIF",
+                        "owner": "Lupita",
+                        "status": "80%"
+                    },
+                    {
+                        "name": "REPOSITORIOS",
+                        "owner": "Josue",
+                        "status": "50%"
+                    },
+                    {
+                        "name": "SECTUR",
+                        "owner": "Francisco",
+                        "status": "10%"
+                    },
+                    {
+                        "name": "INEE",
+                        "owner": "Enrique",
+                        "status": "100%"
+                    },
+                    {
+                        "name": "SEKC",
+                        "owner": "Daniel",
+                        "status": "30%"
+                    }
+                ]
+            }
+        },
+        {
+            "data": "password",
+            "type": "password",
+            "readOnly": true
         }
     ]
 }
