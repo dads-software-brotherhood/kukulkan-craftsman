@@ -5,9 +5,9 @@
     .module('kukulkancraftsmanApp')
     .controller('UserHandsontableController', UserHandsontableController);
 
-  UserHandsontableController.$inject = ['$scope', 'hotRegisterer', 'UserHandsontable'];
+  UserHandsontableController.$inject = ['$scope', 'hotRegisterer', 'UserHandsontable', 'AlertService'];
 
-  function UserHandsontableController($scope, hotRegisterer, UserHandsontable) {
+  function UserHandsontableController($scope, hotRegisterer, UserHandsontable, AlertService) {
     var vm = this;
 
     vm.settings = {
@@ -17,13 +17,13 @@
 
     $scope.$on('$viewContentLoaded', function () {
       var hotInstance = hotRegisterer.getInstance('my-handsontable');
-      console.log(hotInstance);
-      UserHandsontable.query({}, function (data) {
-        console.log(data);
-        hotInstance.updateSettings(data);
-      }, function () {
-        console.log("ERROR");
-      });
+      UserHandsontable.query({}, onSuccess, onError);
+      function onSuccess(settings) {
+        hotInstance.updateSettings(settings);
+      }
+      function onError(error) {
+        AlertService.error(error.data.message);
+      }
     });
   }
 })();

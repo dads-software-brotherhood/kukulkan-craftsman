@@ -18,7 +18,7 @@ import mx.infotec.dads.kukulkan.tables.handsontable.annotations.SheetColumn;
 /**
  * A DTO representing a user, with his authorities.
  */
-@Sheet(allowEmpty = true, readOnly = true, maxRows = 7)
+@Sheet(readOnly = true)
 public class UserDTO {
 
     @SheetColumn
