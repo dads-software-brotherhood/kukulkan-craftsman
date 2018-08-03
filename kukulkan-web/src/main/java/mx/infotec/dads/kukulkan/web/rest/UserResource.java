@@ -186,6 +186,11 @@ public class UserResource {
         return ResponseEntity.ok().headers(HeaderUtil.createAlert( "userManagement.deleted", login)).build();
     }
     
+    /**
+     * Returns a Handsontable of all registered users
+     * @param pageable
+     * @return a Handsontable of UserDTO
+     */
     @GetMapping("/users/handsontable")
     @Timed
     public Handsontable<UserDTO> getHandsontableUsers(@ApiParam Pageable pageable) {

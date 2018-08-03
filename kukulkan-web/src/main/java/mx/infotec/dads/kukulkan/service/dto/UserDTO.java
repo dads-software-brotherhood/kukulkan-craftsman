@@ -1,29 +1,30 @@
 package mx.infotec.dads.kukulkan.service.dto;
 
-import mx.infotec.dads.kukulkan.config.Constants;
+import java.time.ZonedDateTime;
+import java.util.Set;
+import java.util.stream.Collectors;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+
+import mx.infotec.dads.kukulkan.config.Constants;
 import mx.infotec.dads.kukulkan.domain.Authority;
 import mx.infotec.dads.kukulkan.domain.User;
 import mx.infotec.dads.kukulkan.tables.handsontable.annotations.Sheet;
 import mx.infotec.dads.kukulkan.tables.handsontable.annotations.SheetColumn;
 
-import org.hibernate.validator.constraints.Email;
-
-import javax.validation.constraints.*;
-import java.time.ZonedDateTime;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 /**
  * A DTO representing a user, with his authorities.
  */
-@Sheet
+@Sheet(allowEmpty = true, readOnly = true, maxRows = 7)
 public class UserDTO {
 
-    @SheetColumn(title = "ID", type = "text")
+    @SheetColumn
     private String id;
-    
-    @SheetColumn(title = "Login", type = "text")
+
+    @SheetColumn
     @Pattern(regexp = Constants.LOGIN_REGEX)
     @Size(min = 1, max = 100)
     private String login;
@@ -34,7 +35,7 @@ public class UserDTO {
     @Size(max = 50)
     private String lastName;
 
-    @SheetColumn(title = "Email", type = "text")
+    @SheetColumn
     @Email
     @Size(min = 5, max = 100)
     private String email;
@@ -42,25 +43,25 @@ public class UserDTO {
     @Size(max = 256)
     private String imageUrl;
 
-    @SheetColumn(title = "Active", type = "checkbox")
+    @SheetColumn
     private boolean activated = false;
 
-    @SheetColumn(title = "Language", type = "text")
+    @SheetColumn
     @Size(min = 2, max = 5)
     private String langKey;
 
     private String createdBy;
 
-    @SheetColumn(title = "Created date", type = "date")
+    @SheetColumn
     private ZonedDateTime createdDate;
 
-    @SheetColumn(title = "Modified by", type = "text")
+    @SheetColumn
     private String lastModifiedBy;
 
-    @SheetColumn(title = "Modified date", type = "date")
+    @SheetColumn
     private ZonedDateTime lastModifiedDate;
 
-    @SheetColumn(title = "Profiles", type = "text")
+    @SheetColumn
     private Set<String> authorities;
 
     public UserDTO() {

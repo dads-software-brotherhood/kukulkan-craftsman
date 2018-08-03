@@ -1,28 +1,30 @@
 package mx.infotec.dads.kukulkan.service;
 
-import mx.infotec.dads.kukulkan.domain.Authority;
-import mx.infotec.dads.kukulkan.domain.User;
-import mx.infotec.dads.kukulkan.repository.AuthorityRepository;
-import mx.infotec.dads.kukulkan.config.Constants;
-import mx.infotec.dads.kukulkan.repository.UserRepository;
-import mx.infotec.dads.kukulkan.security.AuthoritiesConstants;
-import mx.infotec.dads.kukulkan.security.SecurityUtils;
-import mx.infotec.dads.kukulkan.service.util.RandomUtil;
-import mx.infotec.dads.kukulkan.tables.handsontable.Handsontable;
-import mx.infotec.dads.kukulkan.tables.handsontable.HandsontableBuilder;
-import mx.infotec.dads.kukulkan.service.dto.UserDTO;
+import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.time.ZonedDateTime;
-import java.util.*;
+import mx.infotec.dads.kukulkan.config.Constants;
+import mx.infotec.dads.kukulkan.domain.Authority;
+import mx.infotec.dads.kukulkan.domain.User;
+import mx.infotec.dads.kukulkan.repository.AuthorityRepository;
+import mx.infotec.dads.kukulkan.repository.UserRepository;
+import mx.infotec.dads.kukulkan.security.AuthoritiesConstants;
+import mx.infotec.dads.kukulkan.security.SecurityUtils;
+import mx.infotec.dads.kukulkan.service.dto.UserDTO;
+import mx.infotec.dads.kukulkan.service.util.RandomUtil;
+import mx.infotec.dads.kukulkan.tables.handsontable.Handsontable;
+import mx.infotec.dads.kukulkan.util.HandsontableUtils;
 
 /**
  * Service class for managing users.
@@ -222,10 +224,12 @@ public class UserService {
         }
     }
 
-    public Handsontable<UserDTO> getHandsontable(Pageable page) {
-        Handsontable<UserDTO> table = HandsontableBuilder.createHandsontable(UserDTO.class);
-        table.withData(getAllManagedUsers(page).getContent());
-        return table.withRowHeaders(true).withHeight(440).withContextMenu(true).withMinSpareRows(true)
-                .withColumnSorting(true).withColWidths(125).withRowHeights(25).withMinRows(20).withReadOnly(true);
+    /**
+     * Returns a Handsontable of all registered users
+     * @param pageable
+     * @return a Handsontable of UserDTO
+     */
+    public Handsontable<UserDTO> getHandsontable(Pageable pageable) {
+        return HandsontableUtils.getHandsontable(UserDTO.class).withData(getAllManagedUsers(pageable).getContent());
     }
 }

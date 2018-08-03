@@ -17,8 +17,9 @@
 
     $scope.$on('$viewContentLoaded', function () {
       var hotInstance = hotRegisterer.getInstance('my-handsontable');
-
+      console.log(hotInstance);
       UserHandsontable.query({}, function (data) {
+        console.log(data);
         hotInstance.updateSettings(data);
       }, function () {
         console.log("ERROR");
