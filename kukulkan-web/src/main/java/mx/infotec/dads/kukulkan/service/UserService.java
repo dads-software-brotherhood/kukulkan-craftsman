@@ -10,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
+import org.springframework.data.domain.SliceImpl;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,7 @@ import mx.infotec.dads.kukulkan.security.SecurityUtils;
 import mx.infotec.dads.kukulkan.service.dto.UserDTO;
 import mx.infotec.dads.kukulkan.service.util.RandomUtil;
 import mx.infotec.dads.kukulkan.tables.handsontable.Handsontable;
+import mx.infotec.dads.kukulkan.tables.handsontable.HandsontableSlice;
 import mx.infotec.dads.kukulkan.util.HandsontableUtils;
 
 /**
@@ -229,7 +232,12 @@ public class UserService {
      * @param pageable
      * @return a Handsontable of UserDTO
      */
-    public Handsontable<UserDTO> getHandsontable(Pageable pageable) {
-        return HandsontableUtils.getHandsontable(UserDTO.class).withData(getAllManagedUsers(pageable).getContent());
+    public HandsontableSlice<UserDTO> getHandsontable(Pageable pageable) {
+        Handsontable<UserDTO> table = HandsontableUtils.getHandsontable(UserDTO.class);
+        Slice<UserDTO> slice = userRepository.findAllByActivatedIsTrue(pageable).map(UserDTO::new);
+        HandsontableSlice<UserDTO> tableSlice = new HandsontableSlice<>(slice);
+        tableSlice.setOptions(table.getOptions());
+        tableSlice.setData(slice.getContent());
+        return tableSlice;
     }
 }

@@ -9,6 +9,7 @@ import mx.infotec.dads.kukulkan.service.MailService;
 import mx.infotec.dads.kukulkan.service.UserService;
 import mx.infotec.dads.kukulkan.service.dto.UserDTO;
 import mx.infotec.dads.kukulkan.tables.handsontable.Handsontable;
+import mx.infotec.dads.kukulkan.tables.handsontable.HandsontableSlice;
 import mx.infotec.dads.kukulkan.web.rest.vm.ManagedUserVM;
 import mx.infotec.dads.kukulkan.web.rest.util.HeaderUtil;
 import mx.infotec.dads.kukulkan.web.rest.util.PaginationUtil;
@@ -193,8 +194,10 @@ public class UserResource {
      */
     @GetMapping("/users/handsontable")
     @Timed
-    public Handsontable<UserDTO> getHandsontableUsers(@ApiParam Pageable pageable) {
+    public ResponseEntity<Handsontable<UserDTO>> getHandsontableUsers(@ApiParam Pageable pageable) {
         log.debug("REST request to get User Handsontable");
-        return userService.getHandsontable(pageable);
+        HandsontableSlice<UserDTO> table = userService.getHandsontable(pageable);
+        HttpHeaders headers = PaginationUtil.generateSliceHttpHeaders(table);
+        return new ResponseEntity<>(table, headers, HttpStatus.OK);
     }
 }
