@@ -235,9 +235,6 @@ public class UserService {
     public HandsontableSlice<UserDTO> getHandsontable(Pageable pageable) {
         Handsontable<UserDTO> table = HandsontableUtils.getHandsontable(UserDTO.class);
         Slice<UserDTO> slice = userRepository.findAllByActivatedIsTrue(pageable).map(UserDTO::new);
-        HandsontableSlice<UserDTO> tableSlice = new HandsontableSlice<>(slice);
-        tableSlice.setOptions(table.getOptions());
-        tableSlice.setData(slice.getContent());
-        return tableSlice;
+        return new HandsontableSlice<>(table, slice);
     }
 }
