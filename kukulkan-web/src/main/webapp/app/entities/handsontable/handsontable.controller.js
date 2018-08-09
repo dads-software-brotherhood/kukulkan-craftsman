@@ -22,7 +22,6 @@
         columnSorting:true,
         colWidths:125,
         rowHeights: 25,
-        filters:true,
         minRows:20
       };
 
