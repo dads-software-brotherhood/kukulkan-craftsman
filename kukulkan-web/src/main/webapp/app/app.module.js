@@ -24,7 +24,8 @@
             // jhipster-needle-angularjs-add-module JHipster will add new module here
             'angular-loading-bar',
             'nvd3',
-            'ngHandsontable'
+            'ngHandsontable',
+            'angularBootstrapNavTree'
         ])
         .run(run);
 
