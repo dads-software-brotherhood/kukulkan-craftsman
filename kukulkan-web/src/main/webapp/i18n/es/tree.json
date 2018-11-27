@@ -1,0 +1,16 @@
+{
+    "tree": {
+        "buttons": {
+            "expand": "Expandir",
+            "collapse": "Colapsar",
+            "expandAll": "Expandir Todo",
+            "collapseAll": "Colapsar Todo",
+            "parent": "Padre",
+            "addBranch": "Agregar rama"
+        },
+        "deleted": "La rama {{ param }} fué eliminada",
+        "delete": {
+            "question": "¿Seguro que quieres eliminar la rama {{ name }}?"
+        }
+    }
+}

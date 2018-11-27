@@ -5,10 +5,10 @@
   module = angular.module('angularBootstrapNavTree', []);
 
   module.directive('abnTree', [
-    '$timeout', function($timeout) {
+    '$timeout','$state', function($timeout, $state) {
       return {
         restrict: 'E',
-        template: "<ul class=\"nav nav-list nav-pills nav-stacked abn-tree\">\n  <li ng-repeat=\"row in tree_rows | filter:{visible:true} track by row.branch.uid\" ng-animate=\"'abn-tree-animate'\" ng-class=\"'level-' + {{ row.level }} + (row.branch.selected ? ' active':'') + ' ' +row.classes.join(' ')\" class=\"abn-tree-row\"><a ng-click=\"user_clicks_branch(row.branch)\"><i ng-class=\"row.tree_icon\" ng-click=\"row.branch.expanded = !row.branch.expanded\" class=\"indented tree-icon\"> </i><span class=\"indented tree-label\">{{ row.name }} </span><span class=\"glyphicon glyphicon-remove pull-right trash\" ng-click=\"delete_branch(row.branch)\" ></span></a> </li>\n</ul>",
+        template: "<ul class=\"nav nav-list nav-pills nav-stacked abn-tree\">\n  <li ng-repeat=\"row in tree_rows | filter:{visible:true} track by row.branch.uid\" ng-animate=\"'abn-tree-animate'\" ng-class=\"'level-' + {{ row.level }} + (row.branch.selected ? ' active':'') + ' ' +row.classes.join(' ')\" class=\"abn-tree-row\"><a ng-click=\"user_clicks_branch(row.branch)\"><i ng-class=\"row.tree_icon\" ng-click=\"row.branch.expanded = !row.branch.expanded\" class=\"indented tree-icon\"> </i><span class=\"indented tree-label\">{{ row.name }} </span><span class=\"glyphicon glyphicon-remove pull-right trash\" ng-click=\"delete_branch(row.branch)\" title=\"Delete\" ></span></a> </li>\n</ul>",
         replace: true,
         scope: {
           treeData: '=',
@@ -109,15 +109,10 @@
           };
           scope.delete_branch = function(branch) {
               if (branch != null) {
-                    var parent = get_parent(branch);
-                    if(parent != null) {
-                      parent.children.splice(parent.children.indexOf(branch), 1);
-                    }
-                    else{
-                        scope.treeData.splice(branch,1);
-                   }
+                var parent = get_parent(branch);
+                $state.go('tree.delete', {'branch':branch,'parent':parent});
               }
-         };
+          };
           get_parent = function(child) {
             var parent;
             parent = void 0;
@@ -315,9 +310,8 @@
                 }
                 return new_branch;
               };
-              tree.remove_branch = function(branch) {
+              tree.remove_branch = function(branch,parent) {
                   if (branch != null) {
-                      var parent = get_parent(branch);
                       if(parent != null) {
                         parent.children.splice(parent.children.indexOf(branch), 1);
                       }

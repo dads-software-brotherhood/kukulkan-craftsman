@@ -1,0 +1,16 @@
+{
+    "tree": {
+        "buttons": {
+            "expand": "Expand",
+            "collapse": "Collapse",
+            "expandAll": "Expand All",
+            "collapseAll": "Collapse All",
+            "parent": "Parent",
+            "addBranch": "Add branch"
+        },
+        "deleted": "A branch is deleted with identifier {{ param }}",
+        "delete": {
+            "question": "Are you sure you want to delete branch {{ name }}?"
+        }
+    }
+}

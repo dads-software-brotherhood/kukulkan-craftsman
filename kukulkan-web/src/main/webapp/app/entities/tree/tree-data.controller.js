@@ -5,31 +5,28 @@
         .module('kukulkancraftsmanApp')
         .controller('TreeController', TreeController);
 
-    TreeController.$inject = ['$scope', '$timeout', 'LoginService', '$state', 'TreeService','$sce'];
+    TreeController.$inject = ['$stateParams','TreeService'];
 
-    function TreeController($scope, $timeout, LoginService, $state, TreeService, $sce) {
+    function TreeController($stateParams,TreeService) {
         var vm = this;
 
         vm.tree = null;
         vm.treeData = [];
-        vm.data = null
         vm.addBranch = addBranch;
-        vm.my_tree_handler = my_tree_handler;
+        vm.deleteBranch = deleteBranch;
+        vm.branch = $stateParams.branch;
+        vm.parent = $stateParams.parent;
 
         onInit();
+
         function onInit() {
             TreeService.getTree().then(function(response) {
                 vm.treeData = response;
+                if(vm.branch){
+                    vm.deleteBranch();
+               }
             });
         }
-
-        function my_tree_handler(branch) {
-            var _ref;
-            $scope.output = "Seleccionó: " + branch.name;
-            if ((_ref = branch.data) != null ? _ref.description : void 0) {
-                 return $scope.output += '(' + branch.data.description + ')';
-             }
-        };
 
         vm.myTree = vm.tree = {};
 
@@ -46,5 +43,10 @@
            vm.txtBranch = null;
            console.log($scope.my_data);
          };
+
+         function deleteBranch() {
+            vm.tree.remove_branch(vm.branch, vm.parent);
+            vm.branch = null;
+          };
     }
   })();
